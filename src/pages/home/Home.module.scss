@@ -32,6 +32,7 @@
   display: flex;
   justify-content: center;
   height: 100%;
+
   position: relative;
   width: 100%;
 
@@ -39,6 +40,7 @@
 }
 
 .intro {
+  margin-top: 2.5rem;
   color: #fff;
   text-align: center;
 }
@@ -65,10 +67,12 @@
 }
 
 .link {
-  background: linear-gradient(to top left, #ffffff4f, #ffffff98);
+  background: linear-gradient(to bottom, #ffffffc6 40%, #ffffff44);
   border-radius: 0.5rem;
+  color: #4e7736;
   display: inline-block;
   font-size: 1.2rem;
+  font-weight: 600;
   letter-spacing: 4px;
   opacity: 0.9;
   padding: 1rem 2.5rem;
