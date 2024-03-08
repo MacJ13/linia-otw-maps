@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "../pages/home";
+import Map from "../pages/map";
 import App from "../App";
 
 const routerConfig = createBrowserRouter([
@@ -10,6 +11,10 @@ const routerConfig = createBrowserRouter([
       {
         element: <Home />,
         index: true,
+      },
+      {
+        path: "map",
+        element: <Map />,
       },
     ],
   },
