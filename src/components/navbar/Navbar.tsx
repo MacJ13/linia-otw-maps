@@ -1,16 +1,24 @@
+import { NavLink } from "react-router-dom";
 import style from "./Navbar.module.scss";
 
 const Navbar = () => {
+  type NavLinkProps = { isActive: boolean };
+
+  const activeCls = ({ isActive }: NavLinkProps) =>
+    isActive ? style.active : "";
+
   return (
     <nav className={style.nav}>
       <ul className={style.navul}>
         <li className={style.navli}>
-          <a className={style.active} href="">
+          <NavLink className={activeCls} to="/">
             Główna
-          </a>
+          </NavLink>
         </li>
         <li className={style.navli}>
-          <a href="">Mapa</a>
+          <NavLink className={activeCls} to="/map">
+            Map
+          </NavLink>
         </li>
         <li className={style.navli}>
           <a href="">O Projekcie</a>
@@ -19,7 +27,9 @@ const Navbar = () => {
           <a href="">Miejsca</a>
         </li>
         <li className={style.navli}>
-          <a href="">Kontakt</a>
+          <NavLink className={activeCls} to="/contact">
+            Kontakt
+          </NavLink>
         </li>
       </ul>
       <Curve />
