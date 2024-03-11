@@ -1,7 +1,8 @@
+// import SplitPane from "../../components/splitPane/SplitPane";
 import style from "./Contact.module.scss";
 
 const Contact = () => {
-  return <div>Contact</div>;
+  return <div className={style.contact}></div>;
 };
 
 export default Contact;
