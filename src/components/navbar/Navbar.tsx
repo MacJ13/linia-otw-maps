@@ -24,7 +24,9 @@ const Navbar = () => {
           <a href="">O Projekcie</a>
         </li>
         <li className={style.navli}>
-          <a href="">Miejsca</a>
+          <NavLink className={activeCls} to="/places">
+            Miejsca
+          </NavLink>
         </li>
         <li className={style.navli}>
           <NavLink className={activeCls} to="/contact">
