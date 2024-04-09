@@ -76,6 +76,29 @@ ul {
   }
 }
 
+.main {
+  background-size: cover;
+  display: flex;
+  height: 35rem;
+  min-height: 100vh;
+  position: relative;
+  padding: 0 2rem;
+  width: 100%;
+
+  z-index: 0;
+
+  &::after {
+    background-color: rgb(0, 0, 0);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+}
+
 // button {
 //   border-radius: 8px;
 //   border: 1px solid transparent;
