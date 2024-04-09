@@ -1,86 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
 
 .main {
-  background-color: white;
   background-image: url(/src/assets/images/test.jpg);
 
   background-position: center;
-  background-size: cover;
-
-  height: 30rem;
-  min-height: 100vh;
-
-  position: relative;
-  z-index: 0;
 
   &::after {
-    background-color: rgba(0, 0, 0, 0.5);
-
-    content: "";
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-
-    width: 100%;
-    z-index: -1;
+    opacity: 0.55;
   }
 }
 
 .box {
   align-items: center;
   display: flex;
-  justify-content: center;
   height: 100%;
-
-  position: relative;
-  width: 100%;
+  justify-content: center;
 
   padding: 1rem;
+  position: relative;
+  width: 100%;
 }
 
 .intro {
   margin-top: 2.5rem;
-  color: #fff;
+
   text-align: center;
+
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
 }
 
-.h1 {
-  font-family: "Limelight", sans-serif;
-  font-size: 4rem;
-
-  letter-spacing: 2px;
-  line-height: 1;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-}
-
-.desc {
-  font-size: 1.1rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  line-height: 1.7;
-  margin: auto;
-  margin-bottom: 1.5rem;
+.p {
   max-width: 40rem;
-  word-spacing: 2px;
+  width: 100%;
+  margin: auto;
 }
 
 .link {
-  background: linear-gradient(to bottom, #ffffffc6 40%, #ffffff44);
-  border-radius: 0.5rem;
-  // color: #4e7736;
-  color: rgb(50, 22, 6);
-  display: inline-block;
   font-size: 1.2rem;
   font-weight: 600;
-  letter-spacing: 4px;
-  opacity: 0.9;
-  padding: 1rem 2.5rem;
-
-  text-transform: uppercase;
-
-  &:hover {
-    opacity: 1;
-  }
 }
