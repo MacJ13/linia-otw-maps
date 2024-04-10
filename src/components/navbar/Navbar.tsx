@@ -17,11 +17,13 @@ const Navbar = () => {
         </li>
         <li className={style.navli}>
           <NavLink className={activeCls} to="/map">
-            Map
+            Mapa
           </NavLink>
         </li>
         <li className={style.navli}>
-          <a href="">O Projekcie</a>
+          <NavLink className={activeCls} to="/project">
+            O Projekcie
+          </NavLink>
         </li>
         <li className={style.navli}>
           <NavLink className={activeCls} to="/places">

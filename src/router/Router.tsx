@@ -3,6 +3,8 @@ import Home from "../pages/home";
 import Map from "../pages/map";
 import App from "../App";
 import Contact from "../pages/contact";
+import Places from "../pages/places";
+import Project from "../pages/project";
 
 const routerConfig = createBrowserRouter([
   {
@@ -16,6 +18,14 @@ const routerConfig = createBrowserRouter([
       {
         path: "map",
         element: <Map />,
+      },
+      {
+        path: "project",
+        element: <Project />,
+      },
+      {
+        path: "places",
+        element: <Places />,
       },
       {
         path: "contact",
