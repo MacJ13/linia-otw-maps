@@ -1,0 +1,91 @@
+.content {
+  &1,
+  &2 {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 5rem 0;
+
+    @media screen and (max-width: 1000px) {
+      flex-direction: column-reverse;
+      padding: 5rem 0 0 0;
+    }
+  }
+
+  &2 {
+    flex-direction: row-reverse;
+
+    @media screen and (max-width: 1000px) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &1 > .photo {
+    background-image: url(/src/assets/images/station.jpg);
+    background-position: top right;
+    border-top-right-radius: 3.5em;
+    border-bottom-right-radius: 3.5rem;
+    border-top-left-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+    left: -2.5rem;
+  }
+
+  &2 > .photo {
+    background-image: url(/src/assets/images/old-swidermajer.jpg);
+    background-position: center right;
+    border-top-right-radius: 0em;
+    border-bottom-right-radius: 0rem;
+    border-top-left-radius: 3.5rem;
+    border-bottom-left-radius: 3.5rem;
+    right: -2.5rem;
+  }
+
+  &3 {
+    padding: 2rem 4rem;
+    background-color: rgba(255, 255, 255, 0.125);
+  }
+}
+
+.p {
+  font-size: 1.125rem;
+  text-align: justify;
+}
+
+.photo {
+  background-size: cover;
+  border: 2px solid white;
+  box-shadow: rgb(255, 255, 255) 0px 3px 7px 0px,
+    rgba(255, 255, 255, 0.848) 0px 2px 2px 0px;
+  display: block;
+  height: 40rem;
+  position: relative;
+  width: 100%;
+
+  @media screen and (max-width: 1000px) {
+    height: 32.5rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    height: 27.5rem;
+  }
+}
+
+.info {
+  width: 100%;
+  padding: 0 2.5rem 0 2.5rem;
+
+  & > h1 {
+    margin-bottom: 2rem;
+  }
+
+  & > p {
+    text-align: justify;
+    @media screen and (max-width: 1000px) {
+      margin-bottom: 5rem;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    padding: 0 2.5rem 0 2.5rem;
+  }
+}
