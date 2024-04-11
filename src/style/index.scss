@@ -3,6 +3,7 @@
 
 :root {
   --link-color: rgb(50, 22, 6);
+  --bg-main-color: #335330;
 }
 
 *,
@@ -34,7 +35,13 @@ a {
 
 body {
   position: relative;
+  background-color: var(--bg-main-color);
   color: #fff;
+}
+
+button {
+  cursor: pointer;
+  border: none;
 }
 
 ul {
@@ -66,7 +73,7 @@ ul {
 
 .paragraph {
   font-size: 1.125rem;
-  line-height: 1.8;
+  line-height: 1.75;
   letter-spacing: 1px;
   word-spacing: 2px;
 }
