@@ -1,5 +1,6 @@
 import { useState } from "react";
 import style from "./Sidebar.module.scss";
+import FragmentMapItem from "../fragmentMapItem/FragmentMapItem";
 
 const Sidebar = () => {
   const [activeFeature, setActiveFeature] = useState<number>(0);
@@ -27,7 +28,11 @@ const Sidebar = () => {
           >
             Miejsca
           </button>
-          {activeFeature === 0 && <div className={style.content}></div>}
+          {activeFeature === 0 && (
+            <div className={style.content}>
+              some default text when we click on button link
+            </div>
+          )}
         </div>
         <div
           className={
@@ -47,7 +52,8 @@ const Sidebar = () => {
           {/* <div className={style.content}></div> */}
           {activeFeature === 1 && (
             <div className={style.content}>
-              sdgsdg sdghsdhsdh sdghsdhsdhsd hasdgsdg
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #2" />
             </div>
           )}
         </div>
