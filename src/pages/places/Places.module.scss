@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
+
+.intro {
+  background-image: url("/src/assets/images/places.jpg");
+  background-position: top;
+  background-size: cover;
+  padding: 13rem 2rem 16rem 2rem;
+  position: relative;
+  z-index: 0;
+
+  &::after {
+    background-color: rgba(0, 0, 0, 0.5);
+
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    z-index: -1;
+  }
+
+  @media screen and (max-width: 1000px) {
+    padding: 13rem 2rem 16rem 2rem;
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: 10rem 2rem 13rem 2rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 8rem 2rem 11rem 2rem;
+  }
+}
+
+.ornament {
+  bottom: -0.75rem;
+  fill: #335330;
+  left: 0;
+  position: absolute;
+  transform: rotate(180deg);
+  width: 100%;
+
+  & > svg {
+    fill: inherit;
+  }
+}
+
+.content {
+  background-color: #335330;
+
+  padding: 7.5rem 2rem 10rem 2rem;
+  position: relative;
+}

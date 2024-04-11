@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
+
+.main {
+  background-image: url(/src/assets/images/test.jpg);
+
+  background-position: center;
+
+  &::after {
+    opacity: 0.55;
+  }
+}
+
+.box {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+
+  padding: 1rem;
+  position: relative;
+  width: 100%;
+}
+
+.intro {
+  margin-top: 2.5rem;
+
+  text-align: center;
+
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.p {
+  max-width: 40rem;
+  width: 100%;
+  margin: auto;
+}
+
+.link {
+  font-size: 1.2rem;
+  font-weight: 600;
+}

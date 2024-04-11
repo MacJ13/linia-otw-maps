@@ -1,0 +1,150 @@
+.wrapper {
+  margin: 0 auto;
+  margin-bottom: 15rem;
+  max-width: 70rem;
+  width: 100%;
+
+  &:last-child {
+    margin-bottom: 0rem;
+  }
+
+  @media screen and (max-width: 1000px) {
+    margin-bottom: 10rem;
+  }
+}
+
+.card {
+  align-items: flex-end;
+
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+
+  text-align: center;
+
+  // padding: 1.5rem;
+  padding: 0 2.5rem;
+  position: relative;
+  color: #fff;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+
+    gap: 3rem;
+  }
+}
+
+.reverse {
+  flex-direction: row-reverse;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
+}
+
+.photo {
+  border-radius: 50%;
+  border: 3px solid #fff;
+
+  box-shadow: #ffffff2c 0px 4px 16px, rgba(255, 255, 255, 0.198) 0px 8px 32px;
+
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    background-color: rgba(0, 0, 0, 0.33);
+
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+  }
+
+  @media screen and (max-width: 800px) {
+    left: 0 !important;
+  }
+
+  & > img {
+    display: block;
+    height: 25.5rem;
+    object-fit: cover;
+
+    width: 25.5rem;
+
+    @media screen and (max-width: 800px) {
+      height: 20rem;
+      width: 20rem;
+    }
+
+    @media screen and (max-width: 600px) {
+      height: 15rem;
+      width: 15em;
+    }
+  }
+}
+
+.content {
+  margin-bottom: 1rem;
+  flex: 1;
+
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.h3 {
+  font-family: "Limelight", sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.p {
+  font-size: 1rem;
+  line-height: 1.7;
+  word-spacing: 1px;
+}
+
+.link {
+  padding: 0.75rem 2.25rem;
+  font-weight: 600;
+}
+
+.ornament {
+  fill: rgba(255, 255, 255, 0.05);
+  position: absolute;
+  top: -2.5rem;
+
+  & svg {
+    display: block;
+    fill: inherit;
+    width: 65rem;
+
+    @media screen and (max-width: 1000px) {
+      width: 55rem;
+    }
+
+    @media screen and (max-width: 800px) {
+      width: 50rem;
+    }
+
+    @media screen and (max-width: 800px) {
+      width: 40rem;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 30rem;
+    }
+  }
+}

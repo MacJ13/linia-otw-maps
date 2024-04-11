@@ -1,0 +1,42 @@
+.ornament {
+  &__top,
+  &__bottom {
+    width: 100%;
+    position: absolute;
+    left: 0;
+
+    & > svg {
+      display: block;
+      width: 100%;
+      fill: rgba(255, 255, 255, 0.125);
+    }
+  }
+
+  &__top {
+    top: 0rem;
+
+    @media screen and (max-width: 1000px) {
+      top: 1rem;
+    }
+
+    @media screen and (max-width: 800px) {
+      top: 1.75rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      top: 3rem;
+    }
+
+    @media screen and (max-width: 400px) {
+      top: 3.25rem;
+    }
+  }
+
+  &__bottom {
+    bottom: -1.25rem;
+
+    & > svg {
+      transform: rotate(180deg);
+    }
+  }
+}
