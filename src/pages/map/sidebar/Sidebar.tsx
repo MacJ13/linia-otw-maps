@@ -5,15 +5,11 @@ import FragmentMapItem from "../fragmentMapItem/FragmentMapItem";
 const Sidebar = () => {
   const [activeFeature, setActiveFeature] = useState<number>(0);
 
-  //   const onButtonClick = (activeNumber: number) => {
-  //     setActiveFeature(activeNumber);
-  //   };
-
   return (
     <div className={style.sidebar}>
       <div className={style.features}>
         <div
-          id="places"
+          id={style.places}
           className={
             activeFeature === 0
               ? `${style.feature} ${style.active__feature}`
@@ -35,6 +31,7 @@ const Sidebar = () => {
           )}
         </div>
         <div
+          id={style.fragments}
           className={
             activeFeature === 1
               ? `${style.feature} ${style.active__feature}`

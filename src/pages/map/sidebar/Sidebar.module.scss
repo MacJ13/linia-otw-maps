@@ -1,35 +1,24 @@
 .sidebar {
-  //   border-top: 0.33rem solid rgba(255, 255, 255, 0.25);
-  //   border-bottom: 0.33rem solid rgba(255, 255, 255, 0.25);
-  // padding-top: 3.5rem;
-
-  text-align: center;
+  border: 0.33rem solid transparent;
   flex: 1;
 
-  // padding: 0.33rem 0;
-  // border-top: 0.33rem solid rgba(255, 255, 255, 0.25);
-  // border-top: 0.33rem solid rgba(255, 255, 255, 0.25);
-  // border-top-left-radius: 1rem;
-  // border-top-right-radius: 1rem;
   overflow: hidden;
-  //   border: 1rem solid rgb(50, 22, 6);
+  // text-align: center;
 }
 
 .features {
   display: flex;
   flex-direction: column;
-  //   gap: 0.25rem;
+
   height: 100%;
 }
 
 .link {
-  //   width: calc(100% - 4px);
-  border-radius: 0;
+  width: calc(100%);
+
   font-size: 1.075rem;
   font-weight: 600;
   letter-spacing: 1px;
-  width: 100%;
-  //   margin: 1px 0;
 }
 
 .feature {
@@ -37,12 +26,13 @@
 }
 
 .active__feature {
-  background-color: rgba(255, 255, 255, 0.125);
   overflow-x: auto;
   height: 100%;
   flex: 1;
 }
 
-.content {
-  //   height: 100%;
+#fragments {
+  & .link {
+    margin: 0.25rem 0;
+  }
 }
