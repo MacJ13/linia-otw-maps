@@ -13,6 +13,8 @@
   //   max-width: 60rem;
   margin: auto;
   width: 100%;
+  position: relative;
+  top: -2rem;
 
   @media screen and (max-width: 800px) {
     justify-content: center;
@@ -20,7 +22,7 @@
 }
 
 .info {
-  padding: 4rem 0;
+  // padding: 4rem 0;
 }
 
 .h3 {
