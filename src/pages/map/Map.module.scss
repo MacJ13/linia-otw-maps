@@ -4,13 +4,13 @@
   height: 30rem;
   min-height: 100vh;
   display: flex;
-  z-index: 0;
+
   background-color: #335330;
   padding-top: 2.75rem;
 }
 
 .map {
-  flex: 3.5;
+  flex: 1;
   display: block;
   position: relative;
   // padding: 0 0.25rem 0.25rem 0;
@@ -18,14 +18,14 @@
   // border-radius: 1rem;
   // border-top: 0.33rem solid rgba(255, 255, 255, 0.25);
   // border-bottom: 0.33rem solid rgba(255, 255, 255, 0.25);
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 #map {
   display: block;
   width: 100%;
   height: 100%;
-
+  z-index: 50;
   // border-bottom-left-radius: 1.5rem;
   // border-bottom-right-radius: 1.5rem;
 

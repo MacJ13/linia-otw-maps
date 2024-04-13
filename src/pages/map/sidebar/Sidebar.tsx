@@ -25,8 +25,10 @@ const Sidebar = () => {
             Miejsca
           </button>
           {activeFeature === 0 && (
-            <div className={style.content}>
-              some default text when we click on button link
+            <div className={style.overflow}>
+              <div className={style.content}>
+                some default text when we click on button link
+              </div>
             </div>
           )}
         </div>
@@ -51,11 +53,27 @@ const Sidebar = () => {
             <div className={style.content}>
               <FragmentMapItem title="Map title #1" />
               <FragmentMapItem title="Map title #2" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
+              <FragmentMapItem title="Map title #1" />
             </div>
           )}
         </div>
-
-        <button className={`link ${style.link}`}>Warstwa mapy</button>
+        <div className={style.feature}>
+          <button className={`link ${style.link}`}>Warstwa mapy</button>
+        </div>
       </div>
     </div>
   );

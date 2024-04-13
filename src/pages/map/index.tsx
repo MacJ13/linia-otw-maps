@@ -6,8 +6,6 @@ import Sidebar from "./sidebar/Sidebar";
 const Map = () => {
   return (
     <div className={style.main}>
-      <Sidebar />
-
       <div className={style.map}>
         <MapContainer
           id={style.map}
@@ -19,6 +17,7 @@ const Map = () => {
         >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         </MapContainer>
+        <Sidebar />
       </div>
     </div>
   );
