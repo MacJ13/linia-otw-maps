@@ -10,13 +10,13 @@
   // overflow: hidden;
   position: absolute;
   top: 0;
-  left: 0.25rem;
+  left: var(--gap-h);
   // text-align: center;
   z-index: 100;
   height: calc(100% - (var(--gap-h) * 2));
   margin: var(--gap-h) 0;
 
-  width: 18.25rem;
+  width: 18rem;
 }
 
 .features {
@@ -36,19 +36,18 @@
   letter-spacing: 1px;
   border-radius: 0rem;
   padding: 0.875rem 2.5rem;
-
-  // background: linear-gradient(to bottom, #ffffff 25%, #ffffffcd);
 }
 
 .feature {
-  flex: 0;
+  overflow-x: hidden;
+  flex: none;
   border: 1px solid rgb(50, 22, 6);
   background-color: #335330;
-  // border-radius: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .active__feature {
-  overflow-x: hidden;
+  // overflow-x: hidden;
   // background-color: #335330;
   // min-height: calc(100% - 1.075rem - 2rem - 1rem);
   flex: 1;
