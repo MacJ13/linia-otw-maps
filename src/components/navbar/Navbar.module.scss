@@ -3,20 +3,20 @@
     to bottom,
     rgba(255, 255, 255, 1) 0%,
 
-    rgba(255, 255, 255, 0.75) 50%,
+    rgba(255, 255, 255, 0.85) 50%,
     rgba(255, 255, 255, 0.66) 100%
   );
 
   fill: rgba(255, 255, 255, 0.66);
 
   left: 0;
-  padding: 0.5rem 0 0.33rem 0;
+  padding: 0.75rem 0 0.33rem 0;
   position: absolute;
 
   top: 0;
   width: 100%;
 
-  z-index: 10;
+  z-index: 500;
 
   &ul {
     align-items: center;
@@ -37,6 +37,7 @@
 
   & a {
     position: relative;
+    top: -2px;
     color: rgb(50, 22, 6);
     font-size: 1rem;
   }
