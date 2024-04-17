@@ -1,0 +1,29 @@
+.item {
+  overflow: hidden;
+  flex: none;
+  border: 1px solid #335330;
+  border-radius: 0.5rem;
+}
+
+.active {
+  display: block;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  & > button {
+    opacity: 1;
+  }
+}
+
+.overflow {
+  height: calc(100% - 2.775rem);
+  background-color: #335330;
+}
+
+.content {
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+  padding: 0.33rem 0.5rem;
+}
