@@ -1,0 +1,28 @@
+.list {
+  display: flex;
+  gap: 0.75rem;
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  padding: 0.66rem;
+  margin: 0 1rem;
+
+  background-color: #335330d3;
+  border-radius: 0.25rem;
+}
+
+.item {
+  height: 4.75rem;
+  width: 4.75rem;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  overflow: hidden;
+
+  & > img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
