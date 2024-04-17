@@ -1,0 +1,30 @@
+:root {
+  --gap-h: 0.25rem;
+}
+
+.sidebar {
+  height: calc(100% - (var(--gap-h) * 2));
+  left: var(--gap-h);
+  margin: var(--gap-h) 0;
+  position: absolute;
+  top: 0;
+  z-index: 100;
+
+  width: 18rem;
+}
+
+.li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-h);
+  height: 100%;
+}
+
+.link {
+  border-radius: 0rem;
+  font-size: 0.925rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 0.875rem 2.5rem;
+  width: 100%;
+}
