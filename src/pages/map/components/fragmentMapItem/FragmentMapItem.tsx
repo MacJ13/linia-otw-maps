@@ -1,9 +1,5 @@
+import { FragmentMapItemProps } from "../../../../types/map";
 import style from "./FragmentMapItem.module.scss";
-
-type FragmentMapItemProps = {
-  src?: string;
-  title: string;
-};
 
 const FragmentMapItem = ({ title, src }: FragmentMapItemProps) => {
   return (
