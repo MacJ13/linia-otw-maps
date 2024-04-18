@@ -32,3 +32,13 @@ export interface SideBarOptions {
   activeFeatureId: string;
   openLayerList: boolean;
 }
+
+export interface HistoricLayer {
+  id: string;
+  name: string;
+  layers: string;
+  url: string;
+  format: string;
+  transparent: boolean;
+  opacity: number;
+}
