@@ -35,3 +35,20 @@ export const INIT_MAP_OPTIONS = {
   zoomControl: false,
   attributionControl: false,
 };
+
+export const HISTORIC_LAYERS = [
+  {
+    layers: "bp:P40-S32-F_OTWOCK_1951_modified",
+    name: "Otwock 1951",
+    url: "https://geoserver.cyfrowabocznica.pl/geoserver/wms",
+    format: "image/png",
+  },
+];
+
+// <WMSTileLayer
+// layers="bp:P40-S32-F_OTWOCK_1951_modified"
+// url="https://geoserver.cyfrowabocznica.pl/geoserver/wms"
+// format="image/png"
+// transparent={true}
+// opacity={opacity}
+// />

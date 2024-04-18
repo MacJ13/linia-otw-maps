@@ -5,6 +5,8 @@ import {
   selectOpenHistoricMaps,
   toggleFeatures,
 } from "../../state/sidebarSlice";
+import HistoricLayerList from "../historicLayerList/HistoricLayerList";
+import { HISTORIC_LAYERS } from "../../../../config/map";
 
 const SidebarHistoricLayers = () => {
   const openHistoricMaps = useSelector(selectOpenHistoricMaps);
@@ -20,24 +22,11 @@ const SidebarHistoricLayers = () => {
           dispatch(toggleFeatures());
         }}
       >
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #2" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
-        <FragmentMapItem title="Map title #1" />
+        {HISTORIC_LAYERS.map((layer) => {
+          return <FragmentMapItem layer={layer} />;
+        })}
       </SidebarFeature>
+      <HistoricLayerList />
     </>
   );
 };
