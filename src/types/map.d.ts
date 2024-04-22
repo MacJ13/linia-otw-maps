@@ -15,7 +15,7 @@ export type MapButtonProps = {
 
 export type FragmentMapItemProps = {
   src?: string;
-  title: string;
+  title?: string;
 };
 
 export type SidebarItemProps = {
@@ -34,6 +34,7 @@ export interface SideBarOptions {
 }
 
 export interface HistoricLayer {
+  layerId: string;
   id: string;
   name: string;
   layers: string;
@@ -42,3 +43,31 @@ export interface HistoricLayer {
   transparent: boolean;
   opacity: number;
 }
+
+export type FragmentMapItemProps = {
+  name: string;
+  layers: string;
+  url: string;
+  format: string;
+};
+
+export type LayerProps = {
+  layer: {
+    id: string;
+    name: string;
+    layers: string;
+    url: string;
+    format: string;
+  };
+};
+
+export type HistLayer = {
+  name: string;
+  layers: string;
+  url: string;
+  format: string;
+};
+
+export type DragHistItem = {
+  children?: React.ReactNode;
+} & HistLayer;
