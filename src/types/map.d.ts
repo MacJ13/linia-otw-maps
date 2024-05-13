@@ -83,6 +83,12 @@ type CanvasItemProps = {
   layer: ActiveHistoricLayer;
 };
 
+export interface HistoricLayerState {
+  activeLayers: ActiveHistoricLayer[];
+  sidebarLayer: ActiveHistoricLayer | null;
+  canvasLayer: ActiveHistoricLayer | null;
+}
+
 // export type LayerProps = {
 //   layer: {
 //     id: string;
