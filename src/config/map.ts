@@ -1,5 +1,3 @@
-import { nanoid } from "@reduxjs/toolkit";
-
 export const TILE_LAYERS = [
   {
     name: "main",
