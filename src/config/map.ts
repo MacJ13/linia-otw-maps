@@ -1,3 +1,5 @@
+import { nanoid } from "@reduxjs/toolkit";
+
 export const TILE_LAYERS = [
   {
     name: "main",
@@ -36,19 +38,32 @@ export const INIT_MAP_OPTIONS = {
   attributionControl: false,
 };
 
+export type layersID = {
+  id?: string;
+  title?: string;
+  type: string;
+};
+
 export const HISTORIC_LAYERS = [
   {
+    id: "6vfF78TDDz0JDhXJmOA7y",
     layers: "bp:P40-S32-F_OTWOCK_1951_modified",
     name: "Otwock 1951",
     url: "https://geoserver.cyfrowabocznica.pl/geoserver/wms",
     format: "image/png",
   },
+  {
+    id: "sWqcX4o7NKuE6l1yRCQr4",
+    layers: "bp:wille_modified",
+    name: "Wille Andriollego",
+    url: "https://geoserver.cyfrowabocznica.pl/geoserver/wms",
+    format: "image/png",
+  },
+  {
+    id: "APEmBsTwLmFMmZBvWPMWj",
+    layers: "bp:P40-S32-I_KARCZEW_1952_modified",
+    name: "Karczew 1952",
+    url: "https://geoserver.cyfrowabocznica.pl/geoserver/wms",
+    format: "image/png",
+  },
 ];
-
-// <WMSTileLayer
-// layers="bp:P40-S32-F_OTWOCK_1951_modified"
-// url="https://geoserver.cyfrowabocznica.pl/geoserver/wms"
-// format="image/png"
-// transparent={true}
-// opacity={opacity}
-// />
