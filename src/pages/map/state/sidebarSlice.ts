@@ -7,6 +7,9 @@ const options = {
   openHistoricMaps: false,
   openLayerList: false,
   activeTileLayer: INIT_TILE_LAYER_URL,
+  activeHistoricLayer: "" as string,
+
+  activeHistoricId: "" as string,
 };
 
 const sidebarSlice = createSlice({
@@ -14,9 +17,15 @@ const sidebarSlice = createSlice({
   initialState: options,
 
   reducers: {
+    changeActiveId(state, action: PayloadAction<string>) {
+      state.activeHistoricId = action.payload;
+    },
+
     toggleFeatures(state) {
       state.openPlaces = !state.openPlaces;
       state.openHistoricMaps = !state.openHistoricMaps;
+
+      if (!state.openHistoricMaps) state.activeHistoricLayer = "";
     },
 
     toggleLayerList(state) {
@@ -30,8 +39,12 @@ const sidebarSlice = createSlice({
   },
 });
 
-export const { toggleFeatures, toggleLayerList, changeTileLayer } =
-  sidebarSlice.actions;
+export const {
+  toggleFeatures,
+  toggleLayerList,
+  changeTileLayer,
+  changeActiveId,
+} = sidebarSlice.actions;
 
 export const selectOpenPlaces = (state: RootState) => state.sidebar.openPlaces;
 
