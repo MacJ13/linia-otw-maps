@@ -1,4 +1,4 @@
-import { MapButtonProps } from "../../../types/map";
+import { MapButtonProps } from "../../../../types/map";
 import style from "./MapButton.module.scss";
 
 const MapButton = ({ name, handleClick }: MapButtonProps) => {
