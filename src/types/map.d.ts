@@ -34,15 +34,22 @@ export interface SideBarOptions {
 }
 
 export interface HistoricLayer {
-  layerId: string;
+  // layerId: string;
   id: string;
   name: string;
   layers: string;
   url: string;
   format: string;
+  // transparent: boolean;
+  // opacity: number;
+}
+
+export type ActiveHistoricLayer = {
+  type: string;
+  layerId: string;
   transparent: boolean;
   opacity: number;
-}
+} & HistoricLayer;
 
 export type FragmentMapItemProps = {
   name: string;
@@ -51,23 +58,48 @@ export type FragmentMapItemProps = {
   format: string;
 };
 
+export type DraggableLayerProps = {
+  layer: HistoricLayer;
+};
+
 export type LayerProps = {
-  layer: {
-    id: string;
-    name: string;
-    layers: string;
-    url: string;
-    format: string;
-  };
+  overlay?: boolean;
+  layer: HistoricLayer | null;
 };
 
-export type HistLayer = {
-  name: string;
-  layers: string;
-  url: string;
-  format: string;
+type CanvasProps = {
+  layers: ActiveHistoricLayer[];
+  dragging: boolean;
 };
 
-export type DragHistItem = {
-  children?: React.ReactNode;
-} & HistLayer;
+type SortableItemProps = {
+  id: string;
+  layer: ActiveHistoricLayer;
+  index: number;
+};
+
+type CanvasItemProps = {
+  overlay?: boolean;
+  layer: ActiveHistoricLayer;
+};
+
+// export type LayerProps = {
+//   layer: {
+//     id: string;
+//     name: string;
+//     layers: string;
+//     url: string;
+//     format: string;
+//   };
+// };
+
+// export type HistLayer = {
+//   name: string;
+//   layers: string;
+//   url: string;
+//   format: string;
+// };
+
+// export type DragHistItem = {
+//   children?: React.ReactNode;
+// } & HistLayer;
