@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import SidebarFeature from "./SidebarFeature";
 import { selectOpenLayerList, toggleLayerList } from "../../state/sidebarSlice";
-import LayerList from "../layerList/LayerList";
+import TileLayerList from "../tileLayerList/TileLayerList";
 
 const SidebarTileLayers = () => {
   const openLayerList = useSelector(selectOpenLayerList);
@@ -15,7 +15,7 @@ const SidebarTileLayers = () => {
           dispatch(toggleLayerList());
         }}
       />
-      {openLayerList && <LayerList />}
+      {openLayerList && <TileLayerList />}
     </>
   );
 };

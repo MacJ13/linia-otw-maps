@@ -1,11 +1,11 @@
-import style from "./LayerList.module.scss";
+import style from "./TileLayerList.module.scss";
 
 import { useDispatch } from "react-redux";
 
 import { TILE_LAYERS } from "../../../../config/map";
 import { changeTileLayer } from "../../state/sidebarSlice";
 
-const LayerList = () => {
+const TileLayerList = () => {
   const dispatch = useDispatch();
 
   const changeMainMap = (url: string) => {
@@ -33,4 +33,4 @@ const LayerList = () => {
   );
 };
 
-export default LayerList;
+export default TileLayerList;
