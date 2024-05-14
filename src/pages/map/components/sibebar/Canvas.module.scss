@@ -3,18 +3,18 @@
   top: 0;
   left: 100%;
 
-  width: 13.25rem;
+  width: 13rem;
 
   // height: 100%;
   // min-height: 3rem;
-  background-color: rgba(60, 60, 60, 0.47);
+  background-color: rgba(60, 60, 60, 0.25);
   padding: 0rem 0;
   margin-left: 1rem;
 
   flex: 1;
   // border: 1px solid black;
 
-  border-radius: 5px;
+  // padding: 2rem;
 
   display: flex;
   flex-direction: column;
@@ -28,8 +28,23 @@
   height: 50px;
   width: 100%;
   // margin: 1rem 0;
-  border: 1px solid white;
+  // border: 1px solid white;
+
   cursor: pointer;
+
+  // &:last-child {
+  //   border-bottom: none;
+  // }
+}
+
+.sort {
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid #fff;
+
+  &:first-child {
+    border-top: none;
+  }
 }
 
 .overlay {

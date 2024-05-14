@@ -66,7 +66,13 @@ const SortableItem = (props: SortableItemProps) => {
   };
 
   return (
-    <div ref={setNodeRef} style={styleSort} {...attributes} {...listeners}>
+    <div
+      className={style.sort}
+      ref={setNodeRef}
+      style={styleSort}
+      {...attributes}
+      {...listeners}
+    >
       <CanvasItem layer={layer} />
     </div>
   );
