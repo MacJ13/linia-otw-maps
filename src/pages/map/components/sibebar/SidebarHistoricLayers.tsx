@@ -5,12 +5,10 @@ import {
   toggleFeatures,
 } from "../../state/sidebarSlice";
 import {
-  Active,
   DndContext,
   DragOverlay,
   KeyboardSensor,
   MouseSensor,
-  Over,
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
@@ -38,6 +36,8 @@ import {
 import DraggableSidebarList, { SidebarLayer } from "./DraggableSidebarLayer";
 import Canvas, { CanvasItem } from "./Canvas";
 import { ActiveHistoricLayer } from "../../../../types/map";
+import { getIndex } from "../../../../utils/getIndex";
+import { getData } from "../../../../utils/getData";
 
 // export const removeAtIndex = (array, index) => {
 //   return [...array.slice(0, index), ...array.slice(index + 1)];
@@ -50,39 +50,6 @@ import { ActiveHistoricLayer } from "../../../../types/map";
 // export const arrayMove = (array, oldIndex, newIndex) => {
 //   return dndKitArrayMove(array, oldIndex, newIndex);
 // };
-
-// const activePreindex = typeof activeData.index === "undefined";
-
-function isUndefined(index: number | undefined) {
-  return typeof index === "undefined";
-}
-
-// const activeIndex =
-// activePreindex || activeData.index < 0
-//   ? -1
-//   : activeData.index;
-
-function getIndex(index: number | undefined) {
-  const indexExists = isUndefined(index);
-  if (indexExists) return -1;
-
-  if (typeof index === "number") {
-    return index < 0 ? -1 : index;
-  }
-}
-
-function getData(prop: Active | Over | null) {
-  return prop?.data?.current ?? {};
-}
-
-// function createSpacer({ id }: { id: string }) {
-//   return {
-//     id,
-//     type: "spacer",
-//     historicLayerId: "",
-//     title: "spacer",
-//   };
-// }
 
 const SidebarHistoricLayers = () => {
   const openHistoricMaps = useSelector(selectOpenHistoricMaps);
@@ -108,23 +75,6 @@ const SidebarHistoricLayers = () => {
       coordinateGetter: sortableKeyboardCoordinates,
     })
   );
-
-  // const activeLayersId = useSelector(selectActiveLayerIds);
-
-  // const [sidebarFieldsRegenKey, setSidebarFieldsRegenKey] = useState(
-  //   Date.now()
-  // );
-
-  // const [layerInsterted, setLayerInserted] = useState<boolean>(false);
-
-  // const spacerInsertedRef = useRef<boolean>(false);
-  // const currentDragLayerRef = useRef<{
-  //   id: string;
-  //   type: string;
-  //   name: string;
-  //   parent: null;
-  //   historicLayerId: string;
-  // } | null>(null);
 
   return (
     <>
@@ -314,8 +264,6 @@ const SidebarHistoricLayers = () => {
                 dispatch(
                   changePositions({
                     overIndex: index,
-                    // layer: activeData.layer,
-                    // allLayers: activeLayers,
                   })
                 );
 
