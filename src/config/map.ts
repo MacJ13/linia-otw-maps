@@ -36,12 +36,6 @@ export const INIT_MAP_OPTIONS = {
   attributionControl: false,
 };
 
-export type layersID = {
-  id?: string;
-  title?: string;
-  type: string;
-};
-
 export const HISTORIC_LAYERS = [
   {
     id: "6vfF78TDDz0JDhXJmOA7y",
