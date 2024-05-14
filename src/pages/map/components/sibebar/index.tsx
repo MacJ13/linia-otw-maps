@@ -1,5 +1,5 @@
 import style from "./Sidebar.module.scss";
-import SidebarHistoricLayers from "./SidebarHistoricMaps";
+import SidebarHistoricLayers from "./SidebarHistoricLayers";
 
 import SidebarPlace from "./SidebarPlace";
 import SidebarTileLayers from "./SidebarTileLayers";
