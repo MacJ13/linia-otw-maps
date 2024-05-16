@@ -60,6 +60,7 @@ export type FragmentMapItemProps = {
 
 export type DraggableLayerProps = {
   layer: HistoricLayer;
+  exist: boolean;
 };
 
 export type LayerProps = {

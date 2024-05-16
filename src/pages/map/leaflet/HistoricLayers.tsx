@@ -4,7 +4,6 @@ import { WMSTileLayer } from "react-leaflet";
 
 const HistoricLayers = () => {
   const activeLayers = useSelector(selectAllActiveLayers);
-
   const wmsLayers = activeLayers.map((layer, index) => {
     if (layer.type === "spacer") return null;
 

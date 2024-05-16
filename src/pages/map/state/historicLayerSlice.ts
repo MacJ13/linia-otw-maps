@@ -55,11 +55,21 @@ const historicLayerSlice = createSlice({
     },
 
     addLayer(state, action: PayloadAction<ActiveHistoricLayer>) {
+      // console.log(action.payload);
+
       const exist = state.activeLayers.find(
-        (layer) => layer.id == action.payload.id
+        (layer) => layer.layerId == action.payload.layerId
       );
 
+      // state.activeLayers.forEach((layer) => {
+      //   console.log(layer.id, layer.layerId, layer.name);
+      // });
+
+      // console.log(exist);
+
       if (exist) return;
+
+      // console.log(exist);
 
       state.activeLayers.push(action.payload);
     },

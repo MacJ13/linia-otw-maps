@@ -7,6 +7,11 @@ import {
   LayerProps,
 } from "../../../../types/map";
 import { HISTORIC_LAYERS } from "../../../../config/map";
+import { useSelector } from "react-redux";
+import {
+  getCanvasLayer,
+  selectAllActiveLayers,
+} from "../../state/historicLayerSlice";
 
 export const SidebarLayer = ({ layer, overlay }: LayerProps) => {
   let cls = style.item;
@@ -31,6 +36,18 @@ const DraggableSidebarLayer = (props: DraggableLayerProps) => {
     },
   });
 
+  if (props.exist) {
+    return (
+      <div className={style.item + " " + style.dragged}>
+        <SidebarLayer layer={layer} {...rest} />
+      </div>
+    );
+  }
+
+  // if (props.exist) {
+  //   return null;
+  // }
+
   return (
     <div ref={setNodeRef} className={style.item} {...listeners} {...attributes}>
       <SidebarLayer layer={layer} {...rest} />
@@ -39,8 +56,24 @@ const DraggableSidebarLayer = (props: DraggableLayerProps) => {
 };
 
 const DraggableSidebarList = () => {
+  const activeLayers = useSelector(selectAllActiveLayers);
+
+  const activeCanvasLayer = useSelector(getCanvasLayer);
+
   const layers = HISTORIC_LAYERS.map((layer) => {
-    return <DraggableSidebarLayer key={layer.id} layer={layer} />;
+    const existLayer = activeLayers.find(
+      (activeLayer) =>
+        activeLayer.layerId === layer.id ||
+        activeCanvasLayer?.layerId === layer.id
+    );
+
+    return (
+      <DraggableSidebarLayer
+        exist={Boolean(existLayer)}
+        key={layer.id}
+        layer={layer}
+      />
+    );
   });
 
   return <div id="draggable-sidebar-list">{layers}</div>;
