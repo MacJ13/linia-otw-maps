@@ -26,6 +26,7 @@ import {
   removeDraggingCanvasLayer,
   removeDraggingSidebarLayer,
   selectAllActiveLayers,
+  selectAllActiveLayersTest,
 } from "../../state/historicLayerSlice";
 
 import {
@@ -74,6 +75,11 @@ const SidebarHistoricLayers = () => {
   const sensors = useSensors(mouseSensor, keyboardSensor);
 
   const isDragging = Boolean(activeSidebarLayer) || Boolean(activeCanvasLayer);
+
+  const canvasLayers = useSelector(selectAllActiveLayersTest);
+
+  console.log("start:", canvasLayers);
+  // console.log("start (pervious):", activeLayers);
 
   return (
     <>
@@ -145,6 +151,7 @@ const SidebarHistoricLayers = () => {
             if (overData.sortable) {
               // console.log("on layers list");
               const { index } = overData.sortable;
+              // console.log(activeData);
 
               dispatch(
                 changePositions({
@@ -157,6 +164,7 @@ const SidebarHistoricLayers = () => {
 
             if (!over) {
               // console.log("outside container");
+
               dispatch(removeDraggingSidebarLayer());
               return;
             }
