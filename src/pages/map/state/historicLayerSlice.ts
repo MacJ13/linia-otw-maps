@@ -131,9 +131,15 @@ const historicLayerSlice = createSlice({
         (layer) => layer.id === action.payload
       );
 
+      const canvasLayer = state.entities[action.payload];
+
       if (!targetLayer) return;
+      if (!canvasLayer) return;
 
       targetLayer.type = "layer";
+
+      canvasLayer.type = "layer";
+      historicLayersAdapter.upsertOne(state, canvasLayer);
     },
 
     ///////// DONE
@@ -155,7 +161,12 @@ const historicLayerSlice = createSlice({
         state.canvasLayer.type = "spacer";
       }
 
+      const index = action.payload;
+      console.log({ payload: action.payload });
+
       const draggingLayer = state.activeLayers[action.payload];
+      // console.log(draggedLayer.name);
+      const draggingId = state.ids[index];
 
       if (!draggingLayer) return;
 
@@ -164,6 +175,10 @@ const historicLayerSlice = createSlice({
       const end = state.activeLayers.slice(action.payload + 1);
 
       state.activeLayers = [...start, ...end];
+
+      if (!draggingId) return;
+
+      historicLayersAdapter.removeOne(state, draggingId);
     },
     insertDraggingCanvasLayer(
       state,
@@ -175,11 +190,22 @@ const historicLayerSlice = createSlice({
         (layer) => layer.id === state.canvasLayer?.id
       );
 
+      const canvasLayer = state.entities[state.canvasLayer?.id as string];
+      console.log({ canvasLayer });
+      const canvasIndex2 = activeIndex;
+
+      // console.log(canvasLayer.name, canvasLayer.id);
+      console.log({ overIndex, canvasIndex, canvasIndex2 });
+
       if (overIndex === activeIndex && overIndex > -1 && activeIndex < -1)
         return;
 
       if (overIndex === -1 && activeIndex === -1) {
         state.activeLayers.push(state.canvasLayer as ActiveHistoricLayer);
+        historicLayersAdapter.addOne(
+          state,
+          state.canvasLayer as ActiveHistoricLayer
+        );
       } else if (overIndex >= 0 && canvasIndex === -1) {
         const copyLayers = [...state.activeLayers];
         copyLayers.splice(
@@ -189,10 +215,32 @@ const historicLayerSlice = createSlice({
         );
 
         state.activeLayers = copyLayers;
+
+        historicLayersAdapter.addOne(
+          state,
+          state.canvasLayer as ActiveHistoricLayer
+        );
+
+        const canvasIds = Array.from(state.ids);
+
+        const draggedId = canvasIds.pop();
+
+        if (draggedId) {
+          canvasIds.splice(overIndex, 0, draggedId);
+
+          state.ids = canvasIds;
+        }
       } else {
         const overLayer = state.activeLayers[overIndex];
         const activeLayer = state.activeLayers[activeIndex];
+
+        const overLayer2 = state.ids[overIndex];
+        const activeLayer2 = state.ids[activeIndex];
         if (!overLayer) return;
+        if (!overLayer2) return;
+
+        state.ids[overIndex] = activeLayer2;
+        state.ids[activeIndex] = overLayer2;
 
         state.activeLayers[overIndex] = activeLayer;
         state.activeLayers[activeIndex] = overLayer;
@@ -252,7 +300,7 @@ const historicLayerSlice = createSlice({
 
       // console.log(start);
       if (sidebarLayer?.id === overLayer.id) return;
-      // if (sidebarLayer2?.id === overLayer2.id) return;
+      if (sidebarLayer2?.id === overLayer2.id) return;
 
       const dragLayer = sidebarLayer ? sidebarLayer : state.sidebarLayer;
 
@@ -269,7 +317,7 @@ const historicLayerSlice = createSlice({
 
         // const overId = state.ids[overIndex];
 
-        const canvasIds = [...state.ids];
+        const canvasIds = Array.from(state.ids);
 
         const draggedId = canvasIds.pop();
 
@@ -281,6 +329,18 @@ const historicLayerSlice = createSlice({
 
         // console.log({ draggedId, overId });
       } else {
+        const draggedIndex = state.ids.findIndex(
+          (id) => id === sidebarLayer2.id
+        );
+
+        state.ids[draggedIndex] = overLayer2.id;
+        state.ids[overIndex] = sidebarLayer2.id;
+
+        // console.log({ draggedIndex, overIndex });
+        // const sidebarLayerDragging =
+        //   state.entities[state.sidebarLayer?.id as string];
+        // console.log(sidebarLayerDragging.name);
+        // historicLayersAdapter.
         // const draggedId =
       }
       // if (sidebarLayer2)

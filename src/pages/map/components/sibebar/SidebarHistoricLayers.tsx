@@ -151,7 +151,7 @@ const SidebarHistoricLayers = () => {
             if (overData.sortable) {
               // console.log("on layers list");
               const { index } = overData.sortable;
-              // console.log(activeData);
+              // console.log(e);
 
               dispatch(
                 changePositions({
@@ -180,6 +180,8 @@ const SidebarHistoricLayers = () => {
             }
             const overIndex = getIndex(overData.index) as number;
 
+            console.log({ overData });
+            console.log({ activeData });
             dispatch(
               insertDraggingCanvasLayer({
                 overIndex,
