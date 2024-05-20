@@ -33,23 +33,24 @@ export interface SideBarOptions {
   openLayerList: boolean;
 }
 
-export interface HistoricLayer {
-  // layerId: string;
+interface SidebarLayer {
   id: string;
   name: string;
   layers: string;
   url: string;
   format: string;
-  // transparent: boolean;
-  // opacity: number;
 }
+
+export type HistoricLayer = {
+  activeId: string;
+} & SidebarLayer;
 
 export type ActiveHistoricLayer = {
   type: string;
   layerId: string;
   transparent: boolean;
   opacity: number;
-} & HistoricLayer;
+} & HistLayer;
 
 export type FragmentMapItemProps = {
   name: string;
@@ -60,22 +61,24 @@ export type FragmentMapItemProps = {
 
 export type DraggableLayerProps = {
   layer: HistoricLayer;
-  exist: boolean;
+  // exist: boolean;
 };
 
 export type LayerProps = {
   overlay?: boolean;
-  layer: HistoricLayer | null;
+  layer: ActiveHistoricLayer | null | HistoricLayer;
 };
 
 type CanvasProps = {
-  layers: ActiveHistoricLayer[];
+  // layers: ActiveHistoricLayer[];
+  ids: string[];
   dragging: boolean;
 };
 
 type SortableItemProps = {
   id: string;
-  layer: ActiveHistoricLayer;
+  // layer: ActiveHistoricLayer;
+  layerId: string;
   index: number;
 };
 

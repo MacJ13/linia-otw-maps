@@ -39,6 +39,7 @@ export const INIT_MAP_OPTIONS = {
 export const HISTORIC_LAYERS = [
   {
     id: "6vfF78TDDz0JDhXJmOA7y",
+    activeId: "kAjKaasT7WfDq7NyzSbA9",
     layers: "bp:P40-S32-F_OTWOCK_1951_modified",
     name: "Otwock 1951",
     url: "https://geoserver.cyfrowabocznica.pl/geoserver/wms",
@@ -46,6 +47,7 @@ export const HISTORIC_LAYERS = [
   },
   {
     id: "sWqcX4o7NKuE6l1yRCQr4",
+    activeId: "EzuNV3jaecvpOlMtocqCW",
     layers: "bp:wille_modified",
     name: "Wille Andriollego",
     url: "https://geoserver.cyfrowabocznica.pl/geoserver/wms",
@@ -53,6 +55,7 @@ export const HISTORIC_LAYERS = [
   },
   {
     id: "APEmBsTwLmFMmZBvWPMWj",
+    activeId: "MMerwCaXaRRXejhj9o_IR",
     layers: "bp:P40-S32-I_KARCZEW_1952_modified",
     name: "Karczew 1952",
     url: "https://geoserver.cyfrowabocznica.pl/geoserver/wms",

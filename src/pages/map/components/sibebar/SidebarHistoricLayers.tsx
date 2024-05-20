@@ -25,8 +25,6 @@ import {
   removeActiveLayers,
   removeDraggingCanvasLayer,
   removeDraggingSidebarLayer,
-  selectAllActiveLayers,
-  selectAllActiveLayersTest,
 } from "../../state/historicLayerSlice";
 
 import {
@@ -39,6 +37,8 @@ import Canvas, { CanvasItem } from "./Canvas";
 import { ActiveHistoricLayer } from "../../../../types/map";
 import { getIndex } from "../../../../utils/getIndex";
 import { getData } from "../../../../utils/getData";
+
+import { selectActiveLayerIds } from "../../state/historicLayerSlice";
 
 // export const removeAtIndex = (array, index) => {
 //   return [...array.slice(0, index), ...array.slice(index + 1)];
@@ -56,7 +56,9 @@ const SidebarHistoricLayers = () => {
   const dispatch = useDispatch();
   const openHistoricMaps = useSelector(selectOpenHistoricMaps);
 
-  const activeLayers = useSelector(selectAllActiveLayers);
+  // const activeLayers = useSelector(selectAllActiveLayers);
+
+  const activeIds = useSelector(selectActiveLayerIds);
 
   const activeSidebarLayer = useSelector(getSidebarLayer);
 
@@ -76,9 +78,9 @@ const SidebarHistoricLayers = () => {
 
   const isDragging = Boolean(activeSidebarLayer) || Boolean(activeCanvasLayer);
 
-  const canvasLayers = useSelector(selectAllActiveLayersTest);
+  // const canvasLayers = useSelector(selectAllActiveLayers);
 
-  console.log("start:", canvasLayers);
+  // console.log("start:", canvasLayers);
   // console.log("start (pervious):", activeLayers);
 
   return (
@@ -92,7 +94,7 @@ const SidebarHistoricLayers = () => {
           const activeData = getData(active);
           const { layer } = activeData;
 
-          // console.log(layer);
+          // console.log(layer.activeId);
 
           if (activeData.fromSidebar) {
             //   const activeLayer = activeLayers.find(
@@ -103,6 +105,7 @@ const SidebarHistoricLayers = () => {
             dispatch(
               createSidebarLayer(
                 layer.id,
+                layer.activeId,
                 layer.name,
                 layer.layers,
                 layer.url,
@@ -180,8 +183,6 @@ const SidebarHistoricLayers = () => {
             }
             const overIndex = getIndex(overData.index) as number;
 
-            console.log({ overData });
-            console.log({ activeData });
             dispatch(
               insertDraggingCanvasLayer({
                 overIndex,
@@ -229,7 +230,8 @@ const SidebarHistoricLayers = () => {
         </SidebarFeature>
         <SortableContext
           strategy={verticalListSortingStrategy}
-          items={activeLayers.map((layer) => layer.id as string | number)}
+          // items={activeLayers.map((layer) => layer.id as string | number)}
+          items={activeIds}
         >
           <DragOverlay dropAnimation={null}>
             {activeSidebarLayer && (
@@ -243,7 +245,8 @@ const SidebarHistoricLayers = () => {
             )}
           </DragOverlay>
           <Canvas
-            layers={activeLayers as ActiveHistoricLayer[]}
+            // layers={activeLayers as ActiveHistoricLayer[]}
+            ids={activeIds}
             dragging={isDragging}
           />
         </SortableContext>

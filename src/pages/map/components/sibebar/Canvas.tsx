@@ -8,6 +8,9 @@ import {
   CanvasProps,
   SortableItemProps,
 } from "../../../../types/map";
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/store";
+import { selectActiveLayerById } from "../../state/historicLayerSlice";
 
 export const CanvasItem = ({ layer, overlay }: CanvasItemProps) => {
   let cls = style.item;
@@ -41,7 +44,15 @@ export const CanvasItem = ({ layer, overlay }: CanvasItemProps) => {
 };
 
 const SortableItem = (props: SortableItemProps) => {
-  const { id, index, layer } = props;
+  const { id, index, layerId } = props;
+
+  // const updatingTask = useSelector((state: RootState) => {
+  //   return selectTaskById(state, taskId)!;
+  // });
+
+  const layer = useSelector((state: RootState) => {
+    return selectActiveLayerById(state, layerId);
+  });
 
   const {
     attributes,
@@ -78,7 +89,7 @@ const SortableItem = (props: SortableItemProps) => {
   );
 };
 
-const Canvas = ({ layers, dragging }: CanvasProps) => {
+const Canvas = ({ ids, dragging }: CanvasProps) => {
   const { setNodeRef } = useDroppable({
     id: "canvas_droppable",
     data: {
@@ -95,7 +106,7 @@ const Canvas = ({ layers, dragging }: CanvasProps) => {
 
   return (
     <div ref={setNodeRef} className={cls}>
-      {layers.map((layer, i) => {
+      {/* {layers.map((layer, i) => {
         return (
           <SortableItem
             key={layer.id}
@@ -104,6 +115,9 @@ const Canvas = ({ layers, dragging }: CanvasProps) => {
             index={i}
           />
         );
+      })} */}
+      {ids.map((id, i) => {
+        return <SortableItem key={id} id={id} layerId={id} index={i} />;
       })}
     </div>
   );
