@@ -3,13 +3,13 @@
   top: 0;
   left: 100%;
 
-  width: 13rem;
+  width: 12.5rem;
 
   // height: 100%;
   // min-height: 3rem;
-  background-color: rgba(60, 60, 60, 0.25);
+  background-color: rgba(255, 255, 255, 0.338);
   padding: 0rem 0;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 
   flex: 1;
   // border: 1px solid black;
@@ -24,31 +24,108 @@
   height: 100%;
 }
 
+.sort {
+  display: flex;
+
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+
+  &:first-child {
+    border-top: 1px solid black;
+    // border-top: none;
+  }
+}
+
 .item {
-  height: 50px;
   width: 100%;
+  padding: 0.425rem 0.33rem;
+
+  display: flex;
+  // justify-content: space-between;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.9607843137) 25%,
+    rgba(255, 255, 255, 0.5568627451)
+  );
+  // height: 40px;
+
+  // padding: 0.125rem 0.5rem;
+
   // margin: 1rem 0;
   // border: 1px solid white;
 
-  cursor: pointer;
+  // cursor: pointer;
 
   // &:last-child {
   //   border-bottom: none;
   // }
 }
 
-.sort {
-  border-top: 1px solid white;
-  border-left: 1px solid white;
-  border-right: 1px solid #fff;
+.btnDrag {
+  background: none;
+  // cursor: grab;
 
-  &:first-child {
-    border-top: none;
+  // margin: 0.25rem 0 0.25rem 0.125rem;
+
+  width: 6px;
+
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+
+  // height: 100%;
+  border-left: 2px dotted #335330;
+  border-right: 2px dotted #335330;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  & > svg {
+    display: block;
+    width: 100%;
+    // fill: rgba(0, 0, 0, 0.642);
+    fill: rgb(50, 22, 6);
+  }
+}
+
+.box {
+  flex: auto;
+  margin-left: 0.5rem;
+  // width: calc(100% - 1.5rem);
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(50, 22, 6);
+  margin-bottom: 0.25rem;
+
+  & > h4 {
+    font-size: 0.95rem;
+    line-height: 1;
+  }
+  width: auto;
+}
+
+.close {
+  display: block;
+  background: none;
+  font-size: 1.025rem;
+  line-height: 0.5;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
   }
 }
 
 .overlay {
-  background-color: white;
+  // background-color: white;
   color: black;
 }
 
@@ -62,5 +139,44 @@
   color: black;
   width: 100%;
   opacity: 0.75;
-  height: 50px;
+  // height: 50px;
+}
+
+.range {
+  width: 100%;
+  & > input {
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    width: calc(100% - 2.5rem); /* Full-width */
+    height: 0.2rem; /* Specified height */
+    background: #335330; /* Grey background */
+
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none; /* Override default look */
+      appearance: none;
+      width: 12px; /* Set a specific slider handle width */
+      height: 12px; /* Slider handle height */
+      border-radius: 50%;
+      background: rgb(50, 22, 6); /* Green background */
+      cursor: pointer; /* Cursor on hover */
+    }
+
+    &::-moz-range-thumb {
+      width: 12px; /* Set a specific slider handle width */
+      height: 12px; /* Slider handle height */
+      border-radius: 50%;
+      background: rgb(50, 22, 6); /* Green background */
+      cursor: pointer; /* Cursor on hover */
+    }
+  }
+
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 }

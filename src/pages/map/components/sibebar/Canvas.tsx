@@ -12,7 +12,12 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";
 import { selectActiveLayerById } from "../../state/historicLayerSlice";
 
-export const CanvasItem = ({ layer, overlay }: CanvasItemProps) => {
+export const CanvasItem = ({
+  attributes,
+  listeners,
+  layer,
+  overlay,
+}: CanvasItemProps) => {
   let cls = style.item;
 
   const { name } = layer;
@@ -38,7 +43,20 @@ export const CanvasItem = ({ layer, overlay }: CanvasItemProps) => {
 
   return (
     <>
-      <div className={cls}>{name}</div>
+      <div className={cls}>
+        <button {...attributes} {...listeners} className={style.btnDrag}>
+          &nbsp;
+        </button>
+        <div className={style.box}>
+          <div className={style.content}>
+            <h4>{name}</h4>
+            <button className={style.close}>&#10006;</button>
+          </div>
+          <div className={style.range}>
+            <input type="range" />
+          </div>
+        </div>
+      </div>
     </>
   );
 };
@@ -77,14 +95,8 @@ const SortableItem = (props: SortableItemProps) => {
   };
 
   return (
-    <div
-      className={style.sort}
-      ref={setNodeRef}
-      style={styleSort}
-      {...attributes}
-      {...listeners}
-    >
-      <CanvasItem layer={layer} />
+    <div className={style.sort} ref={setNodeRef} style={styleSort}>
+      <CanvasItem attributes={attributes} listeners={listeners} layer={layer} />
     </div>
   );
 };

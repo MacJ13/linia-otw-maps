@@ -1,3 +1,6 @@
+import { DraggableAttributes } from "@dnd-kit/core";
+import { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities";
+
 type FeatureItem = {
   active: boolean;
   handleClick: () => void;
@@ -85,6 +88,8 @@ type SortableItemProps = {
 type CanvasItemProps = {
   overlay?: boolean;
   layer: ActiveHistoricLayer;
+  attributes?: DraggableAttributes;
+  listeners?: SyntheticListenerMap | undefined;
 };
 
 export interface HistoricLayerState {

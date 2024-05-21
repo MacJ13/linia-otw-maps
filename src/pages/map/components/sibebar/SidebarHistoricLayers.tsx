@@ -66,7 +66,8 @@ const SidebarHistoricLayers = () => {
 
   const mouseSensor = useSensor(MouseSensor, {
     activationConstraint: {
-      distance: 10,
+      // distance: 10,
+      distance: 2,
     },
   });
 
