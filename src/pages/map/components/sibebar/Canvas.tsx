@@ -8,9 +8,12 @@ import {
   CanvasProps,
   SortableItemProps,
 } from "../../../../types/map";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../state/store";
-import { selectActiveLayerById } from "../../state/historicLayerSlice";
+import {
+  removeLayer,
+  selectActiveLayerById,
+} from "../../state/historicLayerSlice";
 
 export const CanvasItem = ({
   attributes,
@@ -18,6 +21,8 @@ export const CanvasItem = ({
   layer,
   overlay,
 }: CanvasItemProps) => {
+  const dispatch = useDispatch();
+
   let cls = style.item;
 
   const { name } = layer;
@@ -41,6 +46,10 @@ export const CanvasItem = ({
   //   </>
   // );
 
+  // const handleClick = (id: string) => {
+
+  // };
+
   return (
     <>
       <div className={cls}>
@@ -50,7 +59,14 @@ export const CanvasItem = ({
         <div className={style.box}>
           <div className={style.content}>
             <h4>{name}</h4>
-            <button className={style.close}>&#10006;</button>
+            <button
+              onClick={() => {
+                dispatch(removeLayer(layer.id));
+              }}
+              className={style.close}
+            >
+              &#10006;
+            </button>
           </div>
           <div className={style.range}>
             <input type="range" />

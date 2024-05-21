@@ -127,7 +127,12 @@ const historicLayerSlice = createSlice({
     /////////
 
     removeLayer(state, action: PayloadAction<string>) {
-      console.log(state.ids, action.payload);
+      const id = action.payload;
+      const layer = state.entities[id];
+
+      if (!layer) return;
+
+      historicLayersAdapter.removeOne(state, id);
     },
 
     ///////// DONE
