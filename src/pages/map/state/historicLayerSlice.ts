@@ -62,6 +62,39 @@ const historicLayerSlice = createSlice({
       },
     },
 
+    addSidebarLayer: {
+      reducer: (state, action: PayloadAction<ActiveHistoricLayer | null>) => {
+        const layer = action.payload;
+        const exist = state.entities[layer.id];
+
+        if (exist) return;
+        historicLayersAdapter.addOne(state, layer);
+      },
+      prepare(
+        id: string,
+        activeId: string,
+        name: string,
+        layers: string,
+        url: string,
+        format: string
+      ) {
+        return {
+          payload: {
+            layerId: id,
+            // id: nanoid(),
+            id: activeId,
+            name,
+            layers,
+            url,
+            format,
+            transparent: true,
+            opacity: 1,
+            type: "layer",
+          },
+        };
+      },
+    },
+
     ///////// NO CHANGE
     createCanvasLayer(state, action: PayloadAction<ActiveHistoricLayer>) {
       state.canvasLayer = action.payload;
@@ -87,7 +120,7 @@ const historicLayerSlice = createSlice({
 
       const exist = state.entities[layer.id];
 
-      console.log(exist);
+      if (exist) return;
 
       historicLayersAdapter.addOne(state, action.payload);
     },
@@ -312,6 +345,7 @@ export const {
   removeDraggingCanvasLayer,
   createCanvasLayer,
   insertDraggingCanvasLayer,
+  addSidebarLayer,
 } = historicLayerSlice.actions;
 
 export const {

@@ -7,8 +7,11 @@ import {
   LayerProps,
 } from "../../../../types/map";
 import { HISTORIC_LAYERS } from "../../../../config/map";
-import { useSelector } from "react-redux";
-import { selectActiveLayerById } from "../../state/historicLayerSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addSidebarLayer,
+  selectActiveLayerById,
+} from "../../state/historicLayerSlice";
 import { RootState } from "../../state/store";
 
 export const SidebarLayer = ({ layer, overlay }: LayerProps) => {
@@ -24,6 +27,8 @@ export const SidebarLayer = ({ layer, overlay }: LayerProps) => {
 };
 
 const DraggableSidebarLayer = (props: DraggableLayerProps) => {
+  const dispatch = useDispatch();
+
   const { layer, ...rest } = props;
 
   const { attributes, listeners, setNodeRef } = useDraggable({
@@ -52,8 +57,27 @@ const DraggableSidebarLayer = (props: DraggableLayerProps) => {
   //   return null;
   // }
 
+  const onHandleClick = () => {
+    dispatch(
+      addSidebarLayer(
+        layer.id,
+        layer.activeId,
+        layer.name,
+        layer.layers,
+        layer.url,
+        layer.format
+      )
+    );
+  };
+
   return (
-    <div ref={setNodeRef} className={style.item} {...listeners} {...attributes}>
+    <div
+      onClick={onHandleClick}
+      ref={setNodeRef}
+      className={style.item}
+      {...listeners}
+      {...attributes}
+    >
       <SidebarLayer layer={layer} {...rest} />
     </div>
   );
