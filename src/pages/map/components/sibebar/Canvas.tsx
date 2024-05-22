@@ -11,6 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../state/store";
 import {
+  changeLayerOpacity,
   removeLayer,
   selectActiveLayerById,
 } from "../../state/historicLayerSlice";
@@ -25,7 +26,7 @@ export const CanvasItem = ({
 
   let cls = style.item;
 
-  const { name } = layer;
+  const { name, id, opacity } = layer;
 
   if (overlay) {
     cls += " " + style.overlay;
@@ -61,7 +62,7 @@ export const CanvasItem = ({
             <h4>{name}</h4>
             <button
               onClick={() => {
-                dispatch(removeLayer(layer.id));
+                dispatch(removeLayer(id));
               }}
               className={style.close}
             >
@@ -69,7 +70,15 @@ export const CanvasItem = ({
             </button>
           </div>
           <div className={style.range}>
-            <input type="range" />
+            <input
+              type="range"
+              value={opacity * 100}
+              onChange={(e) => {
+                const opacity = Number(e.target.value) / 100;
+
+                dispatch(changeLayerOpacity({ opacity, id }));
+              }}
+            />
           </div>
         </div>
       </div>

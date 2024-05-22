@@ -135,6 +135,20 @@ const historicLayerSlice = createSlice({
       historicLayersAdapter.removeOne(state, id);
     },
 
+    changeLayerOpacity(
+      state,
+      action: PayloadAction<{ opacity: number; id: string }>
+    ) {
+      const { id, opacity } = action.payload;
+      // console.log({ id, opacity });
+
+      const layer = state.entities[id];
+
+      if (!layer) return;
+
+      historicLayersAdapter.upsertOne(state, { ...layer, opacity });
+    },
+
     ///////// DONE
     changeType(state, action: PayloadAction<string>) {
       // const targetLayer = state.activeLayers.find(
@@ -344,6 +358,7 @@ export const {
   changePositions,
   changeType,
   changeCanvasType,
+  changeLayerOpacity,
   removeDraggingSidebarLayer,
   createSidebarLayer,
   removeActiveLayers,
