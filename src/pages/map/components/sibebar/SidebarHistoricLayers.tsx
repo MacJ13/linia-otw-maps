@@ -22,9 +22,12 @@ import {
   getCanvasLayer,
   getSidebarLayer,
   insertDraggingCanvasLayer,
+  moveToLastPosition,
   removeActiveLayers,
   removeDraggingCanvasLayer,
   removeDraggingSidebarLayer,
+  selectAllActiveLayers,
+  selectTotalActiveLayers,
 } from "../../state/historicLayerSlice";
 
 import {
@@ -79,9 +82,12 @@ const SidebarHistoricLayers = () => {
 
   const isDragging = Boolean(activeSidebarLayer) || Boolean(activeCanvasLayer);
 
-  // const canvasLayers = useSelector(selectAllActiveLayers);
+  const totalLayers = useSelector(selectTotalActiveLayers);
 
-  // console.log("start:", canvasLayers);
+  // console.log({ totalLayers });
+  const canvasLayers = useSelector(selectAllActiveLayers);
+
+  console.log("start:", canvasLayers);
   // console.log("start (pervious):", activeLayers);
 
   return (
@@ -119,16 +125,12 @@ const SidebarHistoricLayers = () => {
           dispatch(createCanvasLayer(layer));
         }}
         onDragOver={(e) => {
-          // console.log("_______________________");
-
           const { active, over } = e;
 
           const activeData = getData(active);
           const overData = getData(over);
 
           if (activeData.fromSidebar) {
-            // console.log("from sidebar");
-
             if (overData.isContainer) {
               //   //////////////////////////////////////
               //   // 11111111111111
@@ -147,42 +149,45 @@ const SidebarHistoricLayers = () => {
               // );
               // if (activeLayer) return;
 
-              dispatch(addLayer(activeSidebarLayer as ActiveHistoricLayer));
+              if (!totalLayers) {
+                dispatch(addLayer(activeSidebarLayer as ActiveHistoricLayer));
+              } else {
+                // console.log("DRAG over on container ");
+                // console.log({ activeData, overData });
+
+                const { layer } = activeData;
+
+                dispatch(moveToLastPosition(layer.activeId));
+              }
 
               return;
             }
 
             if (overData.sortable) {
-              // console.log("on layers list");
               const { index } = overData.sortable;
-              // console.log(e);
 
               dispatch(
                 changePositions({
                   overIndex: index,
                 })
               );
-
               return;
             }
 
-            if (!over) {
-              // console.log("outside container");
+            // if (!over) {
+            //   // console.log("outside container");
 
-              dispatch(removeDraggingSidebarLayer());
-              return;
-            }
-
-            return;
+            //   dispatch(removeDraggingSidebarLayer());
+            //   return;
+            // }
           } else {
             const activeIndex = getIndex(activeData.index) as number;
+            const overIndex = getIndex(overData.index) as number;
 
-            if (!over) {
-              // const activeIndex = getIndex(activeData.index) as number;
-              dispatch(removeDraggingCanvasLayer(activeIndex));
+            if (overData.isContainer) {
+              dispatch(moveToLastPosition(activeIndex));
               return;
             }
-            const overIndex = getIndex(overData.index) as number;
 
             dispatch(
               insertDraggingCanvasLayer({
@@ -190,12 +195,6 @@ const SidebarHistoricLayers = () => {
                 activeIndex,
               })
             );
-
-            // if (over?.id === "canvas_droppable") {
-            //   // console.log("on draggable canvas");
-
-            //   return;
-            // }
           }
         }}
         onDragEnd={(e) => {
@@ -204,16 +203,36 @@ const SidebarHistoricLayers = () => {
 
           const activeData = getData(e.active);
 
-          dispatch(removeActiveLayers());
+          const activeIndex = getIndex(activeData.index) as number;
+
           if (!e.over) {
-            return;
+            if (activeData.fromSidebar) dispatch(removeDraggingSidebarLayer());
+            else dispatch(removeDraggingCanvasLayer(activeIndex));
+          } else {
+            if (activeData.fromSidebar)
+              dispatch(changeType(activeSidebarLayer?.id as string));
+            else dispatch(changeCanvasType(activeCanvasLayer?.id as string));
           }
 
-          if (activeData.fromSidebar) {
-            dispatch(changeType(activeSidebarLayer?.id as string));
-          } else {
-            dispatch(changeCanvasType(activeCanvasLayer?.id as string));
-          }
+          dispatch(removeActiveLayers());
+
+          // if (activeData.fromSidebar) {
+          //   if (!e.over) {
+          //     dispatch(removeDraggingSidebarLayer());
+
+          //     return;
+          //   }
+          //   dispatch(removeActiveLayers());
+          //   dispatch(changeType(activeSidebarLayer?.id as string));
+          // } else {
+          //   if (!e.over) {
+          //     // const activeIndex = getIndex(activeData.index) as number;
+          //     dispatch(removeDraggingCanvasLayer(activeIndex));
+          //     return;
+          //   }
+          //   dispatch(removeActiveLayers());
+          //   dispatch(changeCanvasType(activeCanvasLayer?.id as string));
+          // }
         }}
       >
         <SidebarFeature

@@ -192,6 +192,7 @@ const historicLayerSlice = createSlice({
 
     ///////// DONE
     removeDraggingSidebarLayer(state) {
+      console.log("over drag end");
       const draggedId = state.sidebarLayer?.id as string;
 
       // const filteredLayers = state.activeLayers.filter(
@@ -199,6 +200,9 @@ const historicLayerSlice = createSlice({
       // );
 
       // state.activeLayers = filteredLayers;
+
+      state.sidebarLayer = null;
+      state.canvasLayer = null;
 
       historicLayersAdapter.removeOne(state, draggedId);
     },
@@ -222,6 +226,9 @@ const historicLayerSlice = createSlice({
       const draggingId = state.ids[index];
 
       if (!draggingId) return;
+
+      // state.sidebarLayer = null;
+      // state.canvasLayer = null;
 
       historicLayersAdapter.removeOne(state, draggingId);
     },
@@ -349,6 +356,31 @@ const historicLayerSlice = createSlice({
         state.ids[overIndex] = sidebarLayer.id;
       }
     },
+    moveToLastPosition(state, action: PayloadAction<string | number>) {
+      let draggedIndex: number = 0;
+
+      if (typeof action.payload === "string") {
+        const id = action.payload;
+
+        const draggedLayer = state.entities[id];
+
+        if (!draggedLayer) {
+          historicLayersAdapter.addOne(
+            state,
+            state.sidebarLayer as ActiveHistoricLayer
+          );
+          return;
+        }
+
+        draggedIndex = state.ids.indexOf(id);
+      } else if (typeof action.payload === "number") {
+        draggedIndex = action.payload;
+      }
+
+      const copyIds = [...state.ids];
+      copyIds.push(copyIds.splice(draggedIndex, 1)[0]);
+      state.ids = copyIds;
+    },
   },
 });
 
@@ -366,12 +398,14 @@ export const {
   createCanvasLayer,
   insertDraggingCanvasLayer,
   addSidebarLayer,
+  moveToLastPosition,
 } = historicLayerSlice.actions;
 
 export const {
   selectAll: selectAllActiveLayers,
   selectById: selectActiveLayerById,
   selectIds: selectActiveLayerIds,
+  selectTotal: selectTotalActiveLayers,
 } = historicLayersAdapter.getSelectors(
   (state: RootState) => state.historicLayer
 );
