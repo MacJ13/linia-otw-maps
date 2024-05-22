@@ -1,9 +1,9 @@
 import style from "./TileLayerList.module.scss";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { TILE_LAYERS } from "../../../../config/map";
-import { changeTileLayer } from "../../state/sidebarSlice";
+import { changeTileLayer, selectTileLayer } from "../../state/sidebarSlice";
 
 const TileLayerList = () => {
   const dispatch = useDispatch();
@@ -12,14 +12,21 @@ const TileLayerList = () => {
     dispatch(changeTileLayer(url));
   };
 
+  const activeTileLayer = useSelector(selectTileLayer);
+
   return (
     <div className={style.list}>
       {TILE_LAYERS.map(
         (tile: { name: string; url: string; previewUrl: string }) => {
+          const cls =
+            style.item +
+            " " +
+            `${activeTileLayer === tile.url ? style.active : ""}`;
+
           return (
             <button
               key={tile?.name}
-              className={style.item}
+              className={cls}
               onClick={() => {
                 changeMainMap(tile.url);
               }}
