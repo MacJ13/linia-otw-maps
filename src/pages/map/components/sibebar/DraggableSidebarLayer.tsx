@@ -9,7 +9,8 @@ import {
 import { HISTORIC_LAYERS } from "../../../../config/map";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addSidebarLayer,
+  // addSidebarLayer,
+  createSidebarLayer,
   selectActiveLayerById,
 } from "../../state/historicLayerSlice";
 import { RootState } from "../../state/store";
@@ -59,13 +60,14 @@ const DraggableSidebarLayer = (props: DraggableLayerProps) => {
 
   const onHandleClick = () => {
     dispatch(
-      addSidebarLayer(
+      createSidebarLayer(
         layer.id,
         layer.activeId,
         layer.name,
         layer.layers,
         layer.url,
-        layer.format
+        layer.format,
+        "layer"
       )
     );
   };

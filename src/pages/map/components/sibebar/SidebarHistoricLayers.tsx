@@ -26,7 +26,7 @@ import {
   removeActiveLayers,
   removeDraggingCanvasLayer,
   removeDraggingSidebarLayer,
-  selectAllActiveLayers,
+  // selectAllActiveLayers,
   selectTotalActiveLayers,
 } from "../../state/historicLayerSlice";
 
@@ -85,9 +85,9 @@ const SidebarHistoricLayers = () => {
   const totalLayers = useSelector(selectTotalActiveLayers);
 
   // console.log({ totalLayers });
-  const canvasLayers = useSelector(selectAllActiveLayers);
+  // const canvasLayers = useSelector(selectAllActiveLayers);
 
-  console.log("start:", canvasLayers);
+  // console.log("start:", canvasLayers);
   // console.log("start (pervious):", activeLayers);
 
   return (
@@ -116,7 +116,8 @@ const SidebarHistoricLayers = () => {
                 layer.name,
                 layer.layers,
                 layer.url,
-                layer.format
+                layer.format,
+                "spacer"
               )
             );
             return;

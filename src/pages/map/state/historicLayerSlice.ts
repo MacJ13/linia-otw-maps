@@ -35,40 +35,23 @@ const historicLayerSlice = createSlice({
     ///////// NO CHANGE
     createSidebarLayer: {
       reducer: (state, action: PayloadAction<ActiveHistoricLayer | null>) => {
-        state.sidebarLayer = action.payload;
-      },
-      prepare(
-        id: string,
-        activeId: string,
-        name: string,
-        layers: string,
-        url: string,
-        format: string
-      ) {
-        return {
-          payload: {
-            layerId: id,
-            // id: nanoid(),
-            id: activeId,
-            name,
-            layers,
-            url,
-            format,
-            transparent: true,
-            opacity: 1,
-            type: "spacer",
-          },
-        };
-      },
-    },
-
-    addSidebarLayer: {
-      reducer: (state, action: PayloadAction<ActiveHistoricLayer | null>) => {
         const layer = action.payload;
-        const exist = state.entities[layer.id];
 
-        if (exist) return;
-        historicLayersAdapter.addOne(state, layer);
+        // console.log({ layer });
+
+        if (layer.type === "layer") {
+          const exist = state.entities[layer.id];
+
+          // console.log({ layer });
+          if (exist) return;
+          historicLayersAdapter.addOne(state, layer);
+          return;
+        }
+
+        state.sidebarLayer = action.payload;
+        // if (layer.type === "spacer") {
+
+        // }
       },
       prepare(
         id: string,
@@ -76,7 +59,8 @@ const historicLayerSlice = createSlice({
         name: string,
         layers: string,
         url: string,
-        format: string
+        format: string,
+        type: string
       ) {
         return {
           payload: {
@@ -87,13 +71,51 @@ const historicLayerSlice = createSlice({
             layers,
             url,
             format,
+            type,
             transparent: true,
             opacity: 1,
-            type: "layer",
+            // type: "spacer",
           },
         };
       },
     },
+
+    // addSidebarLayer: {
+    //   reducer: (state, action: PayloadAction<ActiveHistoricLayer | null>) => {
+    //     const layer = action.payload;
+    //     // const exist = state.entities[layer.id];
+
+    //     // console.log({ layer });
+    //     // // console.log({ layer });
+    //     // if (exist) return;
+    //     // historicLayersAdapter.addOne(state, layer);
+    //   },
+    //   prepare(
+    //     id: string,
+    //     activeId: string,
+    //     name: string,
+    //     layers: string,
+    //     url: string,
+    //     format: string,
+    //     type: string
+    //   ) {
+    //     return {
+    //       payload: {
+    //         layerId: id,
+    //         // id: nanoid(),
+    //         id: activeId,
+    //         name,
+    //         layers,
+    //         url,
+    //         format,
+    //         type,
+    //         transparent: true,
+    //         opacity: 1,
+    //         // type: "layer",
+    //       },
+    //     };
+    //   },
+    // },
 
     ///////// NO CHANGE
     createCanvasLayer(state, action: PayloadAction<ActiveHistoricLayer>) {
@@ -226,9 +248,6 @@ const historicLayerSlice = createSlice({
       const draggingId = state.ids[index];
 
       if (!draggingId) return;
-
-      // state.sidebarLayer = null;
-      // state.canvasLayer = null;
 
       historicLayersAdapter.removeOne(state, draggingId);
     },
@@ -397,7 +416,7 @@ export const {
   removeDraggingCanvasLayer,
   createCanvasLayer,
   insertDraggingCanvasLayer,
-  addSidebarLayer,
+  // addSidebarLayer,
   moveToLastPosition,
 } = historicLayerSlice.actions;
 
