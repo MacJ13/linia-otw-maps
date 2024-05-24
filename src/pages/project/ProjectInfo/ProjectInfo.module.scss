@@ -2,6 +2,7 @@
   background-color: rgba(255, 255, 255, 0.125);
   padding: 2rem 4rem;
   width: 100%;
+  overflow: hidden;
 }
 
 .box {
@@ -51,18 +52,41 @@
 }
 
 .ornament__side {
+  position: relative;
+  left: 2.5rem;
+
+  & > svg {
+    transform: rotate(150deg);
+  }
+
   &:last-child {
+    left: -2.5rem;
+
     & > svg {
-      transform: rotate(180deg);
+      transform: rotate(30deg);
     }
   }
 
   & > svg {
     fill: #335330;
-    height: 25rem;
+    height: 40rem;
   }
 
   @media screen and (max-width: 800px) {
-    display: none;
+    // display: none;
+
+    & > svg {
+      // fill: #335330;
+      height: 35.5rem;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    // display: none;
+
+    & > svg {
+      // fill: #335330;
+      height: 35.5rem;
+    }
   }
 }
