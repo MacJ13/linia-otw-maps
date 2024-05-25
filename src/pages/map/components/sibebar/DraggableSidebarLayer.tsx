@@ -24,7 +24,11 @@ export const SidebarLayer = ({ layer, overlay }: LayerProps) => {
     cls += " " + style.overlay;
   }
 
-  return <div className={cls}>{name}</div>;
+  return (
+    <div className={cls}>
+      <div className={style.content}>{name}</div>
+    </div>
+  );
 };
 
 const DraggableSidebarLayer = (props: DraggableLayerProps) => {

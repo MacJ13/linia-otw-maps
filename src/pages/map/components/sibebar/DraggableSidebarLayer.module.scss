@@ -2,16 +2,31 @@
   all: unset;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 50px;
+  // justify-content: center;
+  height: 55px;
   width: 100%;
   //   width: 250px;
   border-bottom: 1px solid rgb(255, 255, 255);
   cursor: pointer;
 }
 
+.content {
+  padding: 0 0.5rem;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
 .item.overlay {
-  background-color: white;
+  // background-color: white;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.9707843137) 25%,
+    rgba(255, 255, 255, 0.6768627451)
+  );
+  box-shadow: rgba(0, 0, 0, 0.25) 4px 2px 2px, rgb(51, 51, 51) 0px 0px 0px 0px;
+  border-bottom: none;
   color: black !important;
 }
 
