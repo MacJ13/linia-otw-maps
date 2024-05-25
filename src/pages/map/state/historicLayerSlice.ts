@@ -5,6 +5,8 @@ import {
 } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 import { ActiveHistoricLayer } from "../../../types/map";
+import { moveArrayPosition } from "../../../utils/moveArrayPosition";
+// import { arrayMove } from "@dnd-kit/sortable";
 
 // const initialState: HistoricLayerState = {
 //   activeLayers: [],
@@ -313,11 +315,39 @@ const historicLayerSlice = createSlice({
         }
       } else {
         const overId = state.ids[overIndex];
-        const activeId = state.ids[activeIndex];
+        // const activeId = state.ids[activeIndex];
         if (!overId) return;
 
-        state.ids[overIndex] = activeId;
-        state.ids[activeIndex] = overId;
+        // state.ids = arrayMove(state.ids, overIndex, activeIndex);
+
+        state.ids = moveArrayPosition<string>(
+          state.ids,
+          overIndex,
+          activeIndex
+        );
+
+        // state.ids = moveArrayPosition<string>(
+        //   activeIndex,
+        //   overIndex,
+        //   state.ids
+        // );
+
+        // // state.ids[overIndex] = activeId;
+        // // state.ids[activeIndex] = overId;
+
+        // // const draggedIndex = state.ids.indexOf(sidebarLayer.id);
+
+        // // const draggedId = state.ids[draggedIndex];
+
+        // const start = state.ids.slice(0, activeIndex);
+
+        // const end = state.ids.slice(activeIndex + 1);
+
+        // const restOfCanvas = [...start, ...end];
+
+        // restOfCanvas.splice(overIndex, 0, activeId);
+
+        // state.ids = restOfCanvas;
       }
     },
     changePositions(
@@ -371,8 +401,34 @@ const historicLayerSlice = createSlice({
       } else {
         const draggedIndex = state.ids.indexOf(sidebarLayer.id);
 
-        state.ids[draggedIndex] = overLayer.id;
-        state.ids[overIndex] = sidebarLayer.id;
+        state.ids = moveArrayPosition<string>(
+          state.ids,
+          overIndex,
+          draggedIndex
+        );
+
+        // state.ids = moveArrayPosition<string>(
+        //   draggedIndex,
+        //   overIndex,
+        //   state.ids
+        // );
+
+        // state.ids = arrayMove(state.ids, overIndex, draggedIndex);
+
+        // const draggedId = state.ids[draggedIndex];
+
+        // const start = state.ids.slice(0, draggedIndex);
+
+        // const end = state.ids.slice(draggedIndex + 1);
+
+        // const restOfCanvas = [...start, ...end];
+
+        // restOfCanvas.splice(overIndex, 0, draggedId);
+
+        // state.ids = restOfCanvas;
+
+        // state.ids[draggedIndex] = overLayer.id;
+        // state.ids[overIndex] = sidebarLayer.id;
       }
     },
     moveToLastPosition(state, action: PayloadAction<string | number>) {
