@@ -288,32 +288,30 @@ const historicLayerSlice = createSlice({
       //   state.activeLayers[activeIndex] = overLayer;
       // }
 
-      const canvasIndex = activeIndex;
+      // const canvasIndex = activeIndex;
 
       if (overIndex === activeIndex && overIndex > -1 && activeIndex < -1)
         return;
-
-      if (overIndex === -1 && activeIndex === -1) {
-        historicLayersAdapter.addOne(
-          state,
-          state.canvasLayer as ActiveHistoricLayer
-        );
-      } else if (overIndex >= 0 && canvasIndex === -1) {
-        historicLayersAdapter.addOne(
-          state,
-          state.canvasLayer as ActiveHistoricLayer
-        );
-
-        const canvasIds = Array.from(state.ids);
-
-        const draggedId = canvasIds.pop();
-
-        if (draggedId) {
-          canvasIds.splice(overIndex, 0, draggedId);
-
-          state.ids = canvasIds;
-        }
-      } else {
+      // if (overIndex === -1 && activeIndex === -1) {
+      //   console.log("in canvas no layer");
+      //   historicLayersAdapter.addOne(
+      //     state,
+      //     state.canvasLayer as ActiveHistoricLayer
+      //   );
+      // } else if (overIndex >= 0 && canvasIndex === -1) {
+      //   historicLayersAdapter.addOne(
+      //     state,
+      //     state.canvasLayer as ActiveHistoricLayer
+      //   );
+      //   const canvasIds = Array.from(state.ids);
+      //   console.log("canvas dragging");
+      //   const draggedId = canvasIds.pop();
+      //   if (draggedId) {
+      //     canvasIds.splice(overIndex, 0, draggedId);
+      //     state.ids = canvasIds;
+      //   }
+      // }
+      else {
         const overId = state.ids[overIndex];
         // const activeId = state.ids[activeIndex];
         if (!overId) return;
@@ -326,7 +324,7 @@ const historicLayerSlice = createSlice({
           activeIndex
         );
 
-        // state.ids = moveArrayPosition<string>(
+        // state.ids = changeArrayPosition<string>(
         //   activeIndex,
         //   overIndex,
         //   state.ids
@@ -389,15 +387,21 @@ const historicLayerSlice = createSlice({
           state.sidebarLayer as ActiveHistoricLayer
         );
 
-        const canvasIds = Array.from(state.ids);
+        const lastIndex = state.ids.length - 1;
 
-        const draggedId = canvasIds.pop();
+        state.ids = moveArrayPosition<string>(state.ids, lastIndex, overIndex);
 
-        if (draggedId) {
-          canvasIds.splice(overIndex, 0, draggedId);
+        // console.log("sidebar not in canvas");
 
-          state.ids = canvasIds;
-        }
+        // const canvasIds = Array.from(state.ids);
+
+        // const draggedId = canvasIds.pop();
+
+        // if (draggedId) {
+        //   canvasIds.splice(overIndex, 0, draggedId);
+
+        //   state.ids = canvasIds;
+        // }
       } else {
         const draggedIndex = state.ids.indexOf(sidebarLayer.id);
 
@@ -406,8 +410,7 @@ const historicLayerSlice = createSlice({
           overIndex,
           draggedIndex
         );
-
-        // state.ids = moveArrayPosition<string>(
+        // state.ids = changeArrayPosition<string>(
         //   draggedIndex,
         //   overIndex,
         //   state.ids
@@ -452,9 +455,13 @@ const historicLayerSlice = createSlice({
         draggedIndex = action.payload;
       }
 
-      const copyIds = [...state.ids];
-      copyIds.push(copyIds.splice(draggedIndex, 1)[0]);
-      state.ids = copyIds;
+      // const copyIds = [...state.ids];
+
+      // copyIds.push(copyIds.splice(draggedIndex, 1)[0]);
+      // state.ids = copyIds;
+      const lastIndex = state.ids.length - 1;
+
+      state.ids = moveArrayPosition(state.ids, draggedIndex, lastIndex);
     },
   },
 });
