@@ -1,0 +1,62 @@
+.toggle {
+  // position: relative;
+  // bottom: 7.5rem;
+  margin-left: 0.25rem;
+  // height: 100%;
+  // left: 100%;
+
+  opacity: 0.875;
+
+  transition: opacity 0.25;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.btn {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.9707843137) 25%,
+    rgba(255, 255, 255, 0.6768627451)
+  );
+  box-shadow: rgba(0, 0, 0, 0.25) 4px 2px 2px, rgb(51, 51, 51) 0px 0px 0px 0px;
+
+  height: 100%;
+  width: 0.9rem;
+  border-radius: 0.25rem;
+
+  & > svg {
+    fill: rgb(50, 22, 6);
+    width: 100%;
+  }
+}
+
+.rotate {
+  & > svg {
+    transform: rotate(180deg);
+  }
+}
+
+// .pos {
+//     position: absolute;
+//     bottom: 7.5rem;
+//     margin: inherit;
+//     left: 100%;
+
+//     height: inherit;
+//     width: 1rem;
+//   }
+
+//   .btn {
+//     background: linear-gradient(
+//       to bottom,
+//       rgba(255, 255, 255, 0.9707843137) 25%,
+//       rgba(255, 255, 255, 0.6768627451)
+//     );
+//     box-shadow: rgba(0, 0, 0, 0.25) 4px 2px 2px, rgb(51, 51, 51) 0px 0px 0px 0px;
+
+//     height: 100%;
+//     width: 100%;
+//     border-radius: 0.33rem;
+//   }
