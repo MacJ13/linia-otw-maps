@@ -13,11 +13,17 @@ const Intro = () => {
           <p className="paragraph">
             Na przełomie XIX oraz XX wieku na terenie dzisiejszego Wawra oraz
             powiatu otwockiego powstały dwie równoległe linie:{" "}
-            <strong>
-              linia kolejowa z Warszawy do Lublina (zwana linią otwocką) i linia
-              kolejki wąskotorowej (zwana kolejką jabłonowską)
-            </strong>
-            . Wraz ze swoim uzdrowiskowym mikroklimatem spowodowały dynamiczny
+            <ul className={style.ul}>
+              <li className={style.li}>
+                <strong>linia otwocka</strong> (linia kolejowa z Warszawy do
+                Lublina)
+              </li>
+              <li className={style.li}>
+                <strong>kolejka jabłonowska</strong> (linia kolejki
+                wąskotorowej)
+              </li>
+            </ul>
+            Wraz ze swoim uzdrowiskowym mikroklimatem spowodowały dynamiczny
             rozwój tego obszaru na początku XX wieku.
             <br />
             <br />

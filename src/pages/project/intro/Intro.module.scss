@@ -89,3 +89,13 @@
     padding: 0 2.5rem 0 2.5rem;
   }
 }
+
+.ul {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin: 1rem 0;
+}
+
+.li:first-child {
+  margin-bottom: 1rem;
+}
