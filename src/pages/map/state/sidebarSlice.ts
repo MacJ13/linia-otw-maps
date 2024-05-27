@@ -6,6 +6,7 @@ const options = {
   openPlaces: true,
   openHistoricMaps: false,
   openLayerList: false,
+  openSidebar: true,
   activeTileLayer: INIT_TILE_LAYER_URL,
   activeHistoricLayer: "" as string,
 
@@ -36,6 +37,10 @@ const sidebarSlice = createSlice({
       if (action.payload === state.activeTileLayer) return;
       state.activeTileLayer = action.payload;
     },
+
+    toggleSidebar(state) {
+      state.openSidebar = !state.openSidebar;
+    },
   },
 });
 
@@ -44,6 +49,7 @@ export const {
   toggleLayerList,
   changeTileLayer,
   changeActiveId,
+  toggleSidebar,
 } = sidebarSlice.actions;
 
 export const selectOpenPlaces = (state: RootState) => state.sidebar.openPlaces;
@@ -56,5 +62,8 @@ export const selectOpenLayerList = (state: RootState) =>
 
 export const selectTileLayer = (state: RootState) =>
   state.sidebar.activeTileLayer;
+
+export const selectOpenSidebar = (state: RootState) =>
+  state.sidebar.openSidebar;
 
 export default sidebarSlice.reducer;

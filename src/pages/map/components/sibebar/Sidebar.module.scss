@@ -1,5 +1,6 @@
 :root {
   --gap-h: 0.25rem;
+  --li-width: 14rem;
 }
 
 .sidebar {
@@ -10,7 +11,15 @@
   top: 0;
   z-index: 100;
 
-  width: 14.5rem;
+  display: flex;
+
+  // transition: transform 0.25s;
+  transition: left 0.25s;
+}
+
+.hidden {
+  // transform: translateX(calc(-1 * var(--li-width) - 0.25rem));
+  left: calc(-1 * var(--li-width) - 0.25rem);
 }
 
 .li {
@@ -18,6 +27,7 @@
   flex-direction: column;
   gap: var(--gap-h);
   height: 100%;
+  width: var(--li-width);
 }
 
 .link {
