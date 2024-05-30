@@ -4,11 +4,11 @@
 }
 
 .sidebar {
-  height: calc(100% - (var(--gap-h) * 2));
+  height: calc(100% - (var(--gap-h) * 2) - 3rem);
   left: var(--gap-h);
   margin: var(--gap-h) 0;
   position: absolute;
-  top: 0;
+  top: 3rem;
   z-index: 100;
 
   display: flex;
@@ -19,7 +19,7 @@
 
 .hidden {
   // transform: translateX(calc(-1 * var(--li-width) - 0.25rem));
-  left: calc(-1 * var(--li-width) - 0.25rem);
+  left: calc(-1 * var(--li-width) - var(--gap-h));
 }
 
 .li {
