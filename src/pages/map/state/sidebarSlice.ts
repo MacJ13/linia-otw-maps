@@ -6,10 +6,9 @@ const options = {
   openPlaces: true,
   openHistoricMaps: false,
   openLayerList: false,
-  openSidebar: true,
+  openSidebar: false,
   activeTileLayer: INIT_TILE_LAYER_URL,
   activeHistoricLayer: "" as string,
-
   activeHistoricId: "" as string,
 };
 
@@ -40,6 +39,10 @@ const sidebarSlice = createSlice({
 
     toggleSidebar(state) {
       state.openSidebar = !state.openSidebar;
+
+      if (state.openLayerList) {
+        state.openLayerList = false;
+      }
     },
   },
 });
