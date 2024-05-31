@@ -7,8 +7,9 @@ const Intro = () => {
         <div className={style.photo}></div>
         <div className={style.info}>
           <h1 className="h1">
-            {" "}
-            Na Temat <br /> Projektu
+            Na Temat
+            <br />
+            Projektu
           </h1>
           <p className="paragraph">
             Na przełomie XIX oraz XX wieku na terenie dzisiejszego Wawra oraz
@@ -25,9 +26,9 @@ const Intro = () => {
             </ul>
             Wraz ze swoim uzdrowiskowym mikroklimatem spowodowały dynamiczny
             rozwój tego obszaru na początku XX wieku.
-            <br />
-            <br />
-            Od tamtej pory aż do czasów współczesnych zarówno z postępem
+            {/* <br />
+            <br /> */}{" "}
+            Od tamtej pory aż do czasów współczesnych, zarówno z postępem
             cywilizacyjno-technologicznym jak i z wydarzeniami historycznymi
             obszar regionu uległ znacząco zmianie.
           </p>

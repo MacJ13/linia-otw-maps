@@ -18,26 +18,42 @@
     @media screen and (max-width: 1000px) {
       flex-direction: column-reverse;
     }
+
+    & > .info {
+      padding-left: 3.5rem;
+    }
+  }
+
+  &1 {
+    & > .info {
+      padding-right: 3.5rem;
+    }
   }
 
   &1 > .photo {
     background-image: url(/src/assets/images/station.jpg);
     background-position: top right;
-    border-top-right-radius: 3.5em;
-    border-bottom-right-radius: 3.5rem;
-    border-top-left-radius: 0rem;
-    border-bottom-left-radius: 0rem;
-    left: -2.5rem;
+    // border-top-right-radius: 3.5em;
+    // border-bottom-right-radius: 3.5rem;
+    // border-top-left-radius: 0rem;
+    // border-bottom-left-radius: 0rem;
+    left: -3.5rem;
+
+    box-shadow: #335330 inset -1rem -1rem 0.75rem 0.75rem,
+      #335330 inset 0rem 1rem 0.75rem 0.75rem;
   }
 
   &2 > .photo {
     background-image: url(/src/assets/images/old-swidermajer.jpg);
     background-position: center right;
-    border-top-right-radius: 0em;
-    border-bottom-right-radius: 0rem;
-    border-top-left-radius: 3.5rem;
-    border-bottom-left-radius: 3.5rem;
-    right: -2.5rem;
+    // border-top-right-radius: 0em;
+    // border-bottom-right-radius: 0rem;
+    // border-top-left-radius: 3.5rem;
+    // border-bottom-left-radius: 3.5rem;
+    right: -3.5rem;
+
+    box-shadow: #335330 inset 0rem -1rem 0.75rem 0.75rem,
+      #335330 inset -1rem 1rem 0.75rem 0.75rem;
   }
 
   &3 {
@@ -53,9 +69,9 @@
 
 .photo {
   background-size: cover;
-  border: 2px solid white;
-  box-shadow: rgb(255, 255, 255) 0px 3px 7px 0px,
-    rgba(255, 255, 255, 0.848) 0px 2px 2px 0px;
+  // border: 2px solid white;
+  // box-shadow: rgba(255, 255, 255, 0.9707843137) -2rem 1rem 0px 0px;
+  // rgba(255, 255, 255, 0.6768627451) 5px 5px 5px 0px;
   display: block;
   height: 40rem;
   position: relative;
@@ -72,7 +88,7 @@
 
 .info {
   width: 100%;
-  padding: 0 2.5rem 0 2.5rem;
+  // padding: 0 2.5rem 0 2.5rem;
 
   & > h1 {
     margin-bottom: 2rem;
