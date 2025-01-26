@@ -1,4 +1,5 @@
 import OrnamentSvg from "../../../assets/svg/swidermajer4.svg?react";
+// import SingleCurvedSvg from "../../../assets/svg/singlecurved1.svg?react";
 
 import { Link } from "react-router-dom";
 import style from "./ProjectInfo.module.scss";
