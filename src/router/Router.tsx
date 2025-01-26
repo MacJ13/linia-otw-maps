@@ -35,7 +35,8 @@ const routerConfig = createBrowserRouter(
       ],
     },
   ],
-  { basename: import.meta.env.DEV ? "/" : "/linia-otw-maps/" }
+  // { basename: import.meta.env.DEV ? "/" : "/linia-otw-maps/" }
+  { basename: "/maps-linia-otw/" }
 );
 
 const Router = () => {
