@@ -1,5 +1,5 @@
 import style from "./Intro.module.scss";
-
+import CurvedLineSvg from "../../../assets/svg/curvedline.svg?react";
 const Intro = () => {
   return (
     <>
@@ -34,6 +34,9 @@ const Intro = () => {
           </p>
         </div>
       </div>
+      <div className={style.gap}>
+        <CurvedLineSvg />
+      </div>
       <div className={style.content2}>
         <div className={style.photo}></div>
         <div className={style.info}>
@@ -49,7 +52,7 @@ const Intro = () => {
             <br />
             Dlatego ideą tego projektu jest{" "}
             <strong>
-              zachowanie i utrwalenie pamięci oraz pogłębienie świadomości o o
+              zachowanie i utrwalenie pamięci oraz pogłębienie świadomości o
               miejscach
             </strong>
             , które kiedyś były w pewien sposób istotne dla regionu czy

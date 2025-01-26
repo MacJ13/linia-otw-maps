@@ -1,19 +1,21 @@
 .content {
   &1,
   &2 {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     justify-content: center;
-    padding: 5rem 0;
+    padding: 3.5rem 0;
 
     @media screen and (max-width: 1000px) {
       flex-direction: column-reverse;
-      padding: 5rem 0 0 0;
+      // padding: 5rem 0 0 0;
     }
   }
 
   &2 {
     flex-direction: row-reverse;
+    align-items: center;
+    // margin-bottom: 3.5rem;
 
     @media screen and (max-width: 1000px) {
       flex-direction: column-reverse;
@@ -73,7 +75,7 @@
   // box-shadow: rgba(255, 255, 255, 0.9707843137) -2rem 1rem 0px 0px;
   // rgba(255, 255, 255, 0.6768627451) 5px 5px 5px 0px;
   display: block;
-  height: 40rem;
+  height: 37.5rem;
   position: relative;
   width: 100%;
 
@@ -88,10 +90,11 @@
 
 .info {
   width: 100%;
+  margin-top: 2rem;
   // padding: 0 2.5rem 0 2.5rem;
 
   & > h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 3.5rem;
   }
 
   & > p {
@@ -114,4 +117,19 @@
 
 .li:first-child {
   margin-bottom: 1rem;
+}
+
+.gap {
+  // max-width: 60rem;
+  width: 95%;
+  margin: auto;
+  padding: 2rem 1rem 2rem 1rem;
+
+  // margin: 3.75rem 0;
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+    fill: rgba(255, 255, 255, 0.125);
+  }
 }
