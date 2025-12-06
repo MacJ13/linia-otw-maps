@@ -1,7 +1,11 @@
 import { useDroppable } from "@dnd-kit/core";
 import style from "./Canvas.module.scss";
 import { CSS } from "@dnd-kit/utilities";
-import { useSortable } from "@dnd-kit/sortable";
+import {
+  AnimateLayoutChanges,
+  defaultAnimateLayoutChanges,
+  useSortable,
+} from "@dnd-kit/sortable";
 
 import {
   CanvasItemProps,
@@ -15,6 +19,16 @@ import {
   removeLayer,
   selectActiveLayerById,
 } from "../../state/historicLayerSlice";
+
+const animateLayoutChanges: AnimateLayoutChanges = (args) => {
+  const { isSorting } = args;
+
+  if (isSorting) {
+    return defaultAnimateLayoutChanges(args);
+  }
+
+  return true;
+};
 
 export const CanvasItem = ({
   attributes,
@@ -111,6 +125,7 @@ const SortableItem = (props: SortableItemProps) => {
       id,
       layer,
     },
+    animateLayoutChanges,
   });
 
   const styleSort = {
